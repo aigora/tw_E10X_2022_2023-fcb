@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+Gabriel Santos Jericó (Gabriel-S-J),Jorge Sanchez Serafín(),Carlos Ramírez González(),Esteban Henriquez Montes de Oca()
 
 ## Objetivos del trabajo
 
