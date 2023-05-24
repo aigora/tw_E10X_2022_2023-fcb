@@ -1,7 +1,7 @@
 # [Título del trabajo]
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
-El proyecto que vamos a realizar cosnsiste en hacer un estudio sobre las fuentes de genración de energía eléctrica.
+El proyecto que vamos a realizar consiste en hacer un estudio sobre las fuentes de genración de energía eléctrica.
 ## Integrantes del equipo
 
 Gabriel Santos Jericó (Gabriel-S-J),Jorge Sanchez Serafín(),Carlos Ramírez González(),Esteban Henriquez Montes de Oca()
