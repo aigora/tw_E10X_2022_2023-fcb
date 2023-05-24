@@ -1,16 +1,27 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define FILAS 17
+#define COLUMNAS 24
+#define TIPO_ENERGIA 100
+
+typedef struct {
+    char titulo[TIPO_ENERGIA];
+    double datos[COLUMNAS];
+} Energias;
+
 
 
 int main ()
 {
 
+    Energias registros[FILAS];
+    FILE *archivo;
+    char buffer[1000],op1,op2;
+    int i = 0, j;
 
-    char op1,op2;
 
-
-
-
-    printf("¡¡¡¡¡¡¡¡RED ELECTRICA!!!!!!!!!! ");//titulo 
+    printf("¡¡¡¡¡¡¡¡RED ELECTRICA!!!!!!!!!! ");//titulo
     do
     {
         printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Salir\n\n Opcion: ");
@@ -27,8 +38,52 @@ int main ()
 
              case '2':
                      printf("\n Base de Datos");//aqui se abre la base de datos.
+                     archivo = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
+
+                  if (archivo == NULL) {
+                        printf("Error al abrir el archivo.\n");
+                       return 1;
+                                       }
+
+                  for (j = 0; j < 5; j++) {
+                  fgets(buffer, sizeof(buffer), archivo);
+                                         }
 
 
+                            // Leer y almacenar los datos en el vector de estructuras
+                 while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS) {
+                 char *token = strtok(buffer, ",");
+                               if (token != NULL) {
+                             strncpy(registros[i].titulo, token, TIPO_ENERGIA - 1);
+                                                    }
+
+                     j = 0;
+                        while (token != NULL) {
+                    token = strtok(NULL, ",");
+                    if (token != NULL) {
+                          registros[i].datos[j] = atof(token);
+                             j++;
+                                }
+                                }
+
+                           i++;
+                             }
+
+                        fclose(archivo);
+
+                        char aux;
+
+                        printf("presione 1 para ver datos: ");
+                        scanf("  %c",&aux);
+                        if(aux=='1'){
+                             for (i = 0; i < FILAS; i++) {
+        printf("Título: %s\n", registros[i].titulo);
+        for (j = 0; j < COLUMNAS; j++) {
+            printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
+        }
+        printf("\n");
+    }
+                        }
 
               break;
 
