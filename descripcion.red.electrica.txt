@@ -1,4 +1,15 @@
+ ______     ______     _____        ______     __         ______     ______     ______   ______     __     ______     ______    
+/\  == \   /\  ___\   /\  __-.     /\  ___\   /\ \       /\  ___\   /\  ___\   /\__  _\ /\  == \   /\ \   /\  ___\   /\  __ \   
+\ \  __<   \ \  __\   \ \ \/\ \    \ \  __\   \ \ \____  \ \  __\   \ \ \____  \/_/\ \/ \ \  __<   \ \ \  \ \ \____  \ \  __ \  
+ \ \_\ \_\  \ \_____\  \ \____-     \ \_____\  \ \_____\  \ \_____\  \ \_____\    \ \_\  \ \_\ \_\  \ \_\  \ \_____\  \ \_\ \_\ 
+  \/_/ /_/   \/_____/   \/____/      \/_____/   \/_____/   \/_____/   \/_____/     \/_/   \/_/ /_/   \/_/   \/_____/   \/_/\/_/ 
+                                                                                                                                
+
 Red eléctrica de España (REE) es la empresa que opera y gestiona la red de transporte de energía en nuestro país.
-Se encarga del correcto funcionamiento del transporte de la energía proveniente de las centrales de generación. A través del Centro de Control Técnico (CECOEL), se vigila el correcto funcionamiento, así como cualquier anomalía surgida de imprevisto.
+
+Se encarga del correcto funcionamiento del transporte de la energía proveniente de las centrales de generación.
+A través del Centro de Control Técnico (CECOEL), se vigila el correcto funcionamiento, así como cualquier anomalía surgida de imprevisto.
+
 Definir cuánta energía va a trasladarse cada día por la red de transporte, también es responsabilidad de Red Eléctrica de España. Para ello, REE hace una previsión cada día de cuánta energía va a necesitar nuestra país. De esta forma, la red nunca va a sufrir cortes por exceso o falta de energía.
+
 En este proyecto vas a poder elegir diferentes opciones de informacion que ha sido obtenida por esta empresa.
