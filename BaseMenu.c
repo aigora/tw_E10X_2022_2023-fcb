@@ -16,6 +16,8 @@ void mostrar_introduccion(void);
 
 void programaEnUnaFuncion(Energias registros[FILAS]);
 
+void base_de_datos(Energias registros[FILAS]);
+
 double minimo(Energias tipo);
 
 double emax(Energias tipo);
@@ -54,37 +56,9 @@ int main ()
                      printf("\n Base de Datos");//aqui se abre la base de datos.
 
                          programaEnUnaFuncion(registros);
+                         base_de_datos(registros);
 
-                        char aux;
-
-                        printf("presione 1 para ver datos\n2 para minimo hidraulica: ");
-                        scanf("  %c",&aux);
-
-
-                        switch(aux){
-
-
-                        case '1':
-                            for (i = 0; i < FILAS; i++) {
-                             printf("Título: %s\n", registros[i].titulo);
-                              for (j = 0; j < COLUMNAS; j++) {
-                             printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
-                                                          }
-                                            printf("\n");
-                                           }
-                            break;
-
-                        case '2':
-
-                            printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
-
-              break;
-
-                            break;
-
-
-
-                        }
+                       break;
 
               case '3':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
@@ -204,3 +178,52 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
 
     fclose(archivo);
 }
+
+
+void base_de_datos(Energias registros[FILAS]){
+
+ char aux;
+
+                        printf("presione 1 para ver datos\n2 para minimo hidraulica: ");
+                        scanf("  %c",&aux);
+
+
+                        switch(aux){
+
+
+                        case '1':
+                            for (int i = 0; i < FILAS; i++) {
+                             printf("Título: %s\n", registros[i].titulo);
+                              for (int j = 0; j < COLUMNAS; j++) {
+                             printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
+                                                          }
+                                            printf("\n");
+                                           }
+                            break;
+
+                        case '2':
+
+                            printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
+
+                            break;
+
+
+                        }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
