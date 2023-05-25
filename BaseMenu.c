@@ -8,15 +8,15 @@
 typedef struct {
     char titulo[TIPO_ENERGIA];
     double datos[COLUMNAS];
-} Energias;
+} Energias;//se define la estructura para almacenar los datos de las energías.
 
 
 
-void mostrar_introduccion(void);
+void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
 
-void programaEnUnaFuncion(Energias registros[FILAS]);
+void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para almacenar los datos del fichero en un vector de estructuras.
 
-void base_de_datos(Energias registros[FILAS]);
+void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
 
 double minimo(Energias tipo);
 
@@ -25,38 +25,44 @@ double emax(Energias tipo);
 double mediaprimerano(Energias tipo);
 
 double mediasegundoano(Energias tipo);
+//se declaran todas las funciones que se usarán a lo largo del programa.
 
 int main ()
 {
 
-    Energias registros[FILAS];
-    FILE *archivo;
+    Energias registros[FILAS];//se define el vector de estructuras en el main
+    FILE *archivo;// se define el fichero en el main.
     char buffer[1000],op1,op2;
     int i = 0, j;
 
 
-    mostrar_introduccion();//introduccion
+    //mostrar_introduccion();//se ejecuta la función de introduccion
 
 
-    do
+    do//se ejecuta el bucle del menú principal.
     {
+        mostrar_introduccion();//se ejecuta la función de introduccion
         printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Salir\n\n Opcion: ");
         scanf(" %c",&op1);
 
         switch(op1)
         {
             case '1':
+                system("cls");
                   printf("\n Instrucciones:\n");
                   printf("En esta aplicacion encontrara una base de datos sobre la generacion de electricidad en el 2021 y 2022\n ");
                   printf("Podremos ver que tipos de generacion han habido si ha sido por medios renovables o no y obtener distintos datos estadisticos \n ");
 
+           printf("\n\n\n");
+
+            system("pause");
              break;
 
              case '2':
                      printf("\n Base de Datos");//aqui se abre la base de datos.
 
-                         programaEnUnaFuncion(registros);
-                         base_de_datos(registros);
+                         programaEnUnaFuncion(registros);//Se ejecuta la función de leer el fichero y almacenar los datos en el vector de estructuras.
+                         base_de_datos(registros);//Se ejecuta la función que de base de datos y empiza el submenú de la base de datos.
 
                        break;
 
@@ -74,7 +80,7 @@ int main ()
               break;
         }
 
-
+          system("cls");
     }
     while(1);
     return 0;
@@ -84,18 +90,22 @@ int main ()
 
 void mostrar_introduccion(void){
 
-    FILE *intro;
+    FILE *intro;//Se declara el fichero de introducción.
     char c;
 
   intro = fopen("descripcion.red.electrica.txt","r");
   if(intro==NULL){
-    printf("Error en la introduccion");
+    printf("Error en la introduccion");//abre fichero comprueba que todo bien.
   }
    while(fscanf(intro,"%c",&c)!=EOF){
     printf("%c",c);
-   }
+   }//imprime todo el fichero de introducción.
 
 }
+
+
+//en las funciones el imput es el vector de estructuras, así dentro de la función tienes todos los datos del fichero
+
 
 double emax(Energias tipo)
 {
@@ -146,23 +156,23 @@ return med;
 
 void programaEnUnaFuncion(Energias registros[FILAS]) {
     FILE *archivo;
-    char buffer[1000];
+    char buffer[1000];//vecttor para meter temporalmente una linea
     int i = 0, j;
 
     archivo = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
     if (archivo == NULL) {
         printf("Error al abrir el archivo.\n");
         return;
-    }
+    }//abre fichero y comprueba que todo okey.
     for (j = 0; j < 5; j++) {
         fgets(buffer, sizeof(buffer), archivo);
-    }
+    }//coge las 5 primeras filas y las mete en el temporal.
 
-    while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS) {
-        char *token = strtok(buffer, ",");
+    while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS) {//mientras que lo que lea del archivo y almacenando en temporal no se nulo y i<filas
+        char *token = strtok(buffer, ",");//se declara el token que que será la partición de la linea separado por una coma
         if (token != NULL) {
             strncpy(registros[i].titulo, token, TIPO_ENERGIA - 1);
-        }
+        }//almacena el título de la generación.
 
         j = 0;
         while (token != NULL) {
@@ -174,7 +184,7 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
         }
 
         i++;
-    }
+    }//almacena cada mes en el vector de estructuras
 
     fclose(archivo);
 }
@@ -186,7 +196,7 @@ void base_de_datos(Energias registros[FILAS]){
  char aux1,aux_mostrar_datos;
         system("cls");
 printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
-        while(aux!='q'){
+        while(aux!='q'){//bucle submenu base de datos.
 
             printf("seleccione la opcion que desea realizar\n");
             printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos \n\t 3.salir de base de datos \n");
@@ -211,7 +221,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                              printf("%d/2021: %f GW  ;", j+1, registros[i].datos[j]);
                                                           }
                                             printf("\n\n\n");
-                                           }
+                                           }//bucle que recorre cada año y lo imprime por pantalla
                             break;
 
                             case 'b':
@@ -228,15 +238,9 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                                            }
                             break;
 
-                            }
+                            }//bucle que recorre cada año y lo imprime por pantalla
 
-                           // for (int i = 0; i < FILAS; i++) {
-                            // printf("Título: %s\n", registros[i].titulo);
-                            //  for (int j = 0; j < COLUMNAS; j++) {
-                            // printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
-                                               //           }
-                                           // printf("\n");
-                                          // }
+
                             break;
 
                         case '2':
@@ -247,7 +251,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                         case '3':
 
 
-                            printf("Seguro que quieres salir? (S N) :");//prubea
+                            printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
                             scanf("  %c",&aux1);
                             if(aux1=='s'||aux1=='s'){
                                 aux='q';
