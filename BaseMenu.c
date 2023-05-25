@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include<string.h>
 #define FILAS 17
 #define COLUMNAS 24
 #define TIPO_ENERGIA 100
@@ -10,7 +10,7 @@ typedef struct {
     double datos[COLUMNAS];
 } Energias;
 
-
+void mostrar_introduccion(void);
 
 int main ()
 {
@@ -21,7 +21,9 @@ int main ()
     int i = 0, j;
 
 
-    printf("¡¡¡¡¡¡¡¡RED ELECTRICA!!!!!!!!!! ");//titulo
+    mostrar_introduccion();//introduccion
+
+
     do
     {
         printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Salir\n\n Opcion: ");
@@ -106,3 +108,28 @@ int main ()
     return 0;
 
 }
+
+
+void mostrar_introduccion(void){
+
+    FILE *intro;
+    char c;
+
+  intro = fopen("descripcion.red.electrica.txt","r");
+  if(intro==NULL){
+    printf("Error en la introduccion");
+  }
+   while(fscanf(intro,"%c",&c)!=EOF){
+    printf("%c",c);
+   }
+
+}
+
+
+
+
+
+
+
+
+
