@@ -1,12 +1,10 @@
 # [Título del trabajo]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
-El proyecto que vamos a realizar consiste en hacer un estudio sobre las fuentes de genración de energía eléctrica.
+
+El proyecto que vamos a realizar consiste en hacer un estudio sobre la generación en energía eléctrica en España a lo largo de los años 2021 y 2022, en el que con los datos que se aportan en el fichero organizarlos y mostrar esa información o hacer un estudio de ella a guto del usuario .
 ## Integrantes del equipo
 
 Gabriel Santos Jericó (Gabriel-S-J),Jorge Sanchez Serafín(),Carlos Ramírez González(),Esteban Henriquez Montes de Oca()
 
 ## Objetivos del trabajo
-El objetivo de este trabajo es crear una base de datos acerca de la manera de generar energía eléctrica, evaluando el origen de esta energía
-(Hidráulica, fotovoltaica, ciclo combinado...) y estudiar los pros y contras de cada una de las fuentes.
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+El objetivo de este trabajo es crear una base de datos acerca de la generación de energía eléctrica en nuestro país, evaluando el origen de esta energía, la cantidad de energía producida, que tipo de origen tiene esta energía. La información alamacenada podrá ser consultada, adquirida para hacer algún tipo de estudio estadístico por ejemplo en que mes se consume más y las cusas de ello, la media que consume un español/la y a qué precio estimado le puede salir....
