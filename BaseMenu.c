@@ -10,7 +10,11 @@ typedef struct {
     double datos[COLUMNAS];
 } Energias;
 
+
+
 void mostrar_introduccion(void);
+
+void programaEnUnaFuncion(Energias registros[FILAS]);
 
 double minimo(Energias tipo);
 
@@ -48,39 +52,8 @@ int main ()
 
              case '2':
                      printf("\n Base de Datos");//aqui se abre la base de datos.
-                     archivo = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 
-                  if (archivo == NULL) {
-                        printf("Error al abrir el archivo.\n");
-                       return 1;
-                                       }
-
-                  for (j = 0; j < 5; j++) {
-                  fgets(buffer, sizeof(buffer), archivo);
-                                         }
-
-
-                            // Leer y almacenar los datos en el vector de estructuras
-                 while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS) {
-                 char *token = strtok(buffer, ",");
-                               if (token != NULL) {
-                             strncpy(registros[i].titulo, token, TIPO_ENERGIA - 1);
-                                                    }
-
-                     j = 0;
-                        while (token != NULL) {
-                    token = strtok(NULL, ",");
-                    if (token != NULL) {
-                          registros[i].datos[j] = atof(token);
-                             j++;
-                                }
-                                }
-
-                           i++;
-                             }
-
-                        fclose(archivo);
-
+                         programaEnUnaFuncion(registros);
 
                         char aux;
 
@@ -197,3 +170,37 @@ med = med/(COLUMNAS/2);
 return med;
 }
 
+void programaEnUnaFuncion(Energias registros[FILAS]) {
+    FILE *archivo;
+    char buffer[1000];
+    int i = 0, j;
+
+    archivo = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo.\n");
+        return;
+    }
+    for (j = 0; j < 5; j++) {
+        fgets(buffer, sizeof(buffer), archivo);
+    }
+
+    while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS) {
+        char *token = strtok(buffer, ",");
+        if (token != NULL) {
+            strncpy(registros[i].titulo, token, TIPO_ENERGIA - 1);
+        }
+
+        j = 0;
+        while (token != NULL) {
+            token = strtok(NULL, ",");
+            if (token != NULL) {
+                registros[i].datos[j] = atof(token);
+                j++;
+            }
+        }
+
+        i++;
+    }
+
+    fclose(archivo);
+}
