@@ -183,7 +183,7 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
 void base_de_datos(Energias registros[FILAS]){
 
  char aux;
- char aux1;
+ char aux1,aux_mostrar_datos;
         system("cls");
 printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
         while(aux!='q'){
@@ -198,13 +198,45 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 
 
                         case '1':
-                            for (int i = 0; i < FILAS; i++) {
-                             printf("Título: %s\n", registros[i].titulo);
-                              for (int j = 0; j < COLUMNAS; j++) {
-                             printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
+                            printf("Que datos quuieres ver?\n");
+                            printf("\t a.Todo 2021\n\t b.Todo 2022\n");
+                            scanf("  %c",&aux_mostrar_datos);
+                            switch(aux_mostrar_datos){
+                          case 'a':
+                              system("cls");
+                            printf("   TODO 2021\n");
+                            for (int i = 0; i <FILAS ; i++) {
+                             printf("Titulo: %s\n", registros[i].titulo);
+                              for (int j = 0; j <= 11; j++) {
+                             printf("%d/2021: %f GW  ;", j+1, registros[i].datos[j]);
                                                           }
-                                            printf("\n");
+                                            printf("\n\n\n");
                                            }
+                            break;
+
+                            case 'b':
+                              system("cls");
+                            printf("   TODO 2022\n");
+                            for (int i = 0; i <FILAS ; i++) {
+                             printf("Titulo: %s\n", registros[i].titulo);
+                              for (int j = 12; j < COLUMNAS; j++) {
+
+                             printf("%d/2022: %f GW  ;",j-11, registros[i].datos[j]);
+
+                                                          }
+                                            printf("\n\n\n");
+                                           }
+                            break;
+
+                            }
+
+                           // for (int i = 0; i < FILAS; i++) {
+                            // printf("Título: %s\n", registros[i].titulo);
+                            //  for (int j = 0; j < COLUMNAS; j++) {
+                            // printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
+                                               //           }
+                                           // printf("\n");
+                                          // }
                             break;
 
                         case '2':
