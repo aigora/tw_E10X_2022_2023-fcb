@@ -16,6 +16,9 @@ double minimo(Energias tipo);
 
 double emax(Energias tipo);
 
+double mediaprimerano(Energias tipo);
+
+double mediasegundoano(Energias tipo);
 
 int main ()
 {
@@ -101,14 +104,7 @@ int main ()
                         case '2':
 
                             printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
-                        char (elige);
 
-                        printf("ahora presione 2 para ver maximo de hidraulica: ");
-                        scanf("  %c",&elige);
-                        if (elige = 2)
-                        {
-                            printf("el maximo de hidraulica es %f",emax(registros[0]));
-                        }
               break;
 
                             break;
@@ -177,4 +173,27 @@ double minimo(Energias tipo){
 return res;
 }
 
+double mediaprimerano(Energias tipo)
+{
+    double med=0;
+    int x=0;
+    for(x=0;x<(COLUMNAS/2);x++)
+    {
+        med = med + tipo.datos[x];
+    }
+med = med/(COLUMNAS/2);
+return med;
+}
+
+double mediasegundoano(Energias tipo)
+{
+    double med=0;
+    int x=0;
+    for(x=12;x<COLUMNAS;x++)
+    {
+        med = med + tipo.datos[x];
+    }
+med = med/(COLUMNAS/2);
+return med;
+}
 
