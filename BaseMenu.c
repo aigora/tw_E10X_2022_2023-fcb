@@ -12,6 +12,10 @@ typedef struct {
 
 void mostrar_introduccion(void);
 
+double minimo(Energias tipo);
+
+
+
 int main ()
 {
 
@@ -73,18 +77,35 @@ int main ()
 
                         fclose(archivo);
 
+
                         char aux;
 
-                        printf("presione 1 para ver datos: ");
+                        printf("presione 1 para ver datos\n2 para minimo hidraulica: ");
                         scanf("  %c",&aux);
-                        if(aux=='1'){
-                             for (i = 0; i < FILAS; i++) {
-        printf("Título: %s\n", registros[i].titulo);
-        for (j = 0; j < COLUMNAS; j++) {
-            printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
-        }
-        printf("\n");
-    }
+
+
+                        switch(aux){
+
+
+                        case '1':
+                            for (i = 0; i < FILAS; i++) {
+                             printf("Título: %s\n", registros[i].titulo);
+                              for (j = 0; j < COLUMNAS; j++) {
+                             printf("mes %d: %f GW\n", j+1, registros[i].datos[j]);
+                                                          }
+                                            printf("\n");
+                                           }
+                            break;
+
+                        case '2':
+
+                            printf("el minimo de hidraulica es(PRUEBA) %f",minimo(registros[0]));//prubea
+
+
+                            break;
+
+
+
                         }
 
               break;
@@ -126,7 +147,16 @@ void mostrar_introduccion(void){
 }
 
 
+double minimo(Energias tipo){
+  double res=tipo.datos[0];
+  int i=0;
+  while(i<COLUMNAS){
+    if(tipo.datos[i]< res)res=tipo.datos[i];
+    i++;
+  }
 
+return res;
+}
 
 
 
