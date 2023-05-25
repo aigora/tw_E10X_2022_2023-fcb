@@ -183,9 +183,15 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
 void base_de_datos(Energias registros[FILAS]){
 
  char aux;
+ char aux1;
+        system("cls");
+printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
+        while(aux!='q'){
 
-                        printf("presione 1 para ver datos\n2 para minimo hidraulica: ");
-                        scanf("  %c",&aux);
+            printf("seleccione la opcion que desea realizar\n");
+            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos \n\t 3.salir de base de datos \n");
+            scanf("  %c",&aux);
+
 
 
                         switch(aux){
@@ -206,8 +212,21 @@ void base_de_datos(Energias registros[FILAS]){
                             printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
 
                             break;
+                        case '3':
 
 
+                            printf("Seguro que quieres salir? (S N) :");//prubea
+                            scanf("  %c",&aux1);
+                            if(aux1=='s'||aux1=='s'){
+                                aux='q';
+                                system("cls");
+                                }
+
+
+                            break;
+
+
+                        }
                         }
 
 }
