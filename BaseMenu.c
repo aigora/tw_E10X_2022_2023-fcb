@@ -14,6 +14,7 @@ void mostrar_introduccion(void);
 
 double minimo(Energias tipo);
 
+double emax(Energias tipo);
 
 
 int main ()
@@ -99,16 +100,22 @@ int main ()
 
                         case '2':
 
-                            printf("el minimo de hidraulica es(PRUEBA) %f",minimo(registros[0]));//prubea
+                            printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
+                        char (elige);
 
+                        printf("ahora presione 2 para ver maximo de hidraulica: ");
+                        scanf("  %c",&elige);
+                        if (elige = 2)
+                        {
+                            printf("el maximo de hidraulica es %f",emax(registros[0]));
+                        }
+              break;
 
                             break;
 
 
 
                         }
-
-              break;
 
               case '3':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
@@ -123,6 +130,7 @@ int main ()
                 printf("\n    Opcion no valida");
               break;
         }
+
 
     }
     while(1);
@@ -146,6 +154,17 @@ void mostrar_introduccion(void){
 
 }
 
+double emax(Energias tipo)
+{
+    double maxima = tipo.datos[0];
+    int x=0;
+    for(x=0;x<COLUMNAS;x++)
+    {
+        if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
+    }
+
+return maxima;
+}
 
 double minimo(Energias tipo){
   double res=tipo.datos[0];
@@ -157,9 +176,5 @@ double minimo(Energias tipo){
 
 return res;
 }
-
-
-
-
 
 
