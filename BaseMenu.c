@@ -277,6 +277,7 @@ void datos_estadisticos(Energias registros[FILAS]){
                 printf("¿De que tipo de generacion deseas obtener datos estadisticos?\n");
                 printf("\ta. Hidraulica\n\tb. Turbinacion bombeo \n\tc. Nuclear\n\td. Carbon\n\te. Motores diesel\n\tf. Turbina de gas\n\tg. Turbina de vapor\n\th. Ciclo combinado\n\ti. Hidroeolica\n\tj. Eolica\n\tk. Solar fotovoltaica\n\tl. Solar termica\n\tm. Otras renovables\n\tn. Cogeneracion\n\to. Residuos no renovables\n\tp. Residuos renovables\n\tq. Generacion total\n\t");
                 scanf(" %c", &aux1);
+                if(aux1=='A'||aux1=='z')aux1+=32;//para que si se mete en mayuscula aún asi la coja
 
                 switch (aux1) {
                     case 'a':
