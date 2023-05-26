@@ -1,103 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include<string.h>
-#define FILAS 17
-#define COLUMNAS 24
-#define TIPO_ENERGIA 100
-
-typedef struct {
-    char titulo[TIPO_ENERGIA];
-    double datos[COLUMNAS];
-} Energias;//se define la estructura para almacenar los datos de las energías.
-
-
-
-void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
-
-void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para almacenar los datos del fichero en un vector de estructuras.
-
-void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
-
-void datos_estadisticos(Energias registros[FILAS]);//esta funcion ejecuta los datos estadísticos.
-
-void mercados(Energias registros[FILAS]);
-
-double minimo2021(Energias tipo);
-
-double minimo2022(Energias tipo);
-
-double emax2021(Energias tipo);
-
-double emax2021(Energias tipo);
-
-double mediaprimerano(Energias tipo);
-
-double mediasegundoano(Energias tipo);
-//se declaran todas las funciones que se usarán a lo largo del programa.
-
-int main ()
-{
-
-    Energias registros[FILAS];//se define el vector de estructuras en el main
-    FILE *archivo;// se define el fichero en el main.
-    char buffer[1000],op1,op2;
-    int i = 0, j;
-
-
-    //mostrar_introduccion();//se ejecuta la función de introduccion
-
-
-    do//se ejecuta el bucle del menú principal.
-    {
-        mostrar_introduccion();//se ejecuta la función de introduccion
-        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Registro\n\n 4. Salir\n\n Opcion: ");
-        scanf(" %c",&op1);
-
-        switch(op1)
-        {
-            case '1':
-                system("cls");
-                  printf("\n Instrucciones:\n");
-                  printf("En esta aplicacion encontrara una base de datos sobre la generacion de electricidad en el 2021 y 2022\n ");
-                  printf("Podremos ver que tipos de generacion han habido si ha sido por medios renovables o no y obtener distintos datos estadisticos \n ");
-
-           printf("\n\n\n");
-
-            system("pause");
-             break;
-
-             case '2':
-                     printf("\n Base de Datos");//aqui se abre la base de datos.
-
-                         programaEnUnaFuncion(registros);//Se ejecuta la función de leer el fichero y almacenar los datos en el vector de estructuras.
-                         base_de_datos(registros);//Se ejecuta la función que de base de datos y empiza el submenú de la base de datos.
-
-                       break;
-
-              case '4':
-                printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
-                scanf(" %c",&op2);
-                if(op2=='S' || op2=='s')
-                {
-                    return 0;
-                }
-              break;
-
-              case '3':
-                    printf("bienvenido al registro");//aqui se mete la funciion de registro.
-
-              default:
-                printf("\n    Opcion no valida");
-              break;
-        }
-
-          system("cls");
-    }
-    while(1);
-    return 0;
-
-}
-
+#include"lib.h"
 
 void mostrar_introduccion(void){
 
@@ -118,11 +19,11 @@ void mostrar_introduccion(void){
 //en las funciones el imput es el vector de estructuras, así dentro de la función tienes todos los datos del fichero
 
 
-double emax2021(Energias tipo)
+double emax(Energias tipo)
 {
     double maxima = tipo.datos[0];
-    int x;
-    for(x=0;x<=(COLUMNAS/2);x++)
+    int x=0;
+    for(x=0;x<COLUMNAS;x++)
     {
         if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
     }
@@ -130,33 +31,10 @@ double emax2021(Energias tipo)
 return maxima;
 }
 
-double emax2022(Energias tipo)
-{
-    double maxima = tipo.datos[0];
-    int x;
-    for(x=(COLUMNAS/2);x<=(COLUMNAS);x++)
-    {
-        if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
-    }
-
-return maxima;
-}
-//HAY QUE REVISAR ESTA FUNCION DE emax2022 PORQ NO DA EL RESULTADO CORRECTO!!!!
-double minimo2021(Energias tipo){
+double minimo(Energias tipo){
   double res=tipo.datos[0];
   int i=0;
-  while(i<(COLUMNAS/2)){
-    if(tipo.datos[i]< res)res=tipo.datos[i];
-    i++;
-  }
-
-return res;
-}
-
-double minimo2022(Energias tipo){
-  double res=tipo.datos[0];
-  int i=12;
-  while(i<(COLUMNAS)){
+  while(i<COLUMNAS){
     if(tipo.datos[i]< res)res=tipo.datos[i];
     i++;
   }
@@ -330,10 +208,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'a':
                         system("cls");
                         printf("Estadisticas para Hidraulica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[0]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[0]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[0]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[0]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[0]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[0]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[0]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[0]));
                         printf("\n\n");
@@ -342,10 +218,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'b':
                         system("cls");
                         printf("Estadisticas para Turbinacion bombeo:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[1]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[1]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[1]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[1]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[1]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[1]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[1]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[1]));
                         printf("\n\n");
@@ -354,10 +228,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'c':
                         system("cls");
                         printf("Estadisticas para Nuclear:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[2]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[2]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[2]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[2]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[2]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[2]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[2]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[2]));
                         printf("\n\n");
@@ -366,10 +238,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'd':
                         system("cls");
                         printf("Estadisticas para Carbon:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[3]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[3]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[3]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[3]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[3]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[3]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[3]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[3]));
                         printf("\n\n");
@@ -378,10 +248,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'e':
                         system("cls");
                         printf("Estadisticas para Motores diesel:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[4]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[4]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[4]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[4]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[4]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[4]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[4]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[4]));
                         printf("\n\n");
@@ -390,10 +258,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'f':
                         system("cls");
                         printf("Estadisticas para Turbina de gas:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[5]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[5]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[5]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[5]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[5]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[5]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[5]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[5]));
                         printf("\n\n");
@@ -402,10 +268,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'g':
                         system("cls");
                         printf("Estadisticas para Turbina de vapor:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[6]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[6]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[6]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[6]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[6]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[6]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[6]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[6]));
                         printf("\n\n");
@@ -414,10 +278,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'h':
                         system("cls");
                         printf("Estadisticas para Ciclo combinado:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[7]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[7]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[7]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[7]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[7]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[7]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[7]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[7]));
                         printf("\n\n");
@@ -426,10 +288,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'i':
                         system("cls");
                         printf("Estadisticas para Hidroeolica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[8]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[8]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[8]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[8]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[8]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[8]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[8]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[8]));
                         printf("\n\n");
@@ -438,10 +298,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'j':
                         system("cls");
                         printf("Estadisticas para Eolica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[9]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[9]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[9]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[9]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[9]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[9]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[9]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[9]));
                         printf("\n\n");
@@ -450,10 +308,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'k':
                         system("cls");
                         printf("Estadisticas para Solar fotovoltaica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[10]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[10]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[10]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[10]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[10]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[10]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[10]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[10]));
                         printf("\n\n");
@@ -462,10 +318,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'l':
                         system("cls");
                         printf("Estadisticas para Solar termica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[11]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[11]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[11]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[11]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[11]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[11]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[11]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[11]));
                         printf("\n\n");
@@ -474,10 +328,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'm':
                         system("cls");
                         printf("Estadisticas para Otras renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[12]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[12]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[12]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[12]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[12]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[12]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[12]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[12]));
                         printf("\n\n");
@@ -486,10 +338,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'n':
                         system("cls");
                         printf("Estadisticas para Coogeneracion:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[13]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[13]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[13]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[13]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[13]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[13]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[13]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[13]));
                         printf("\n\n");
@@ -498,10 +348,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'o':
                         system("cls");
                         printf("Estadisticas para Residuos no renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[14]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[14]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[14]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[14]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[14]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[14]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[14]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[14]));
                         printf("\n\n");
@@ -510,10 +358,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'p':
                         system("cls");
                         printf("Estadisticas para Residuos renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[15]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[15]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[15]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[15]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[15]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[15]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[15]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[15]));
                         printf("\n\n");
@@ -521,11 +367,9 @@ void datos_estadisticos(Energias registros[FILAS]){
 
                     case 'q':
                         system("cls");
-                        printf("Estadisticas para Generacion total:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[16]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[16]));
-                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[16]));
-                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[16]));
+                        printf("Estadisticas para Eolica:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[16]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[16]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[16]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[16]));
                         printf("\n\n");
@@ -605,13 +449,3 @@ void mercados(Energias registros[FILAS]){
 
 
 }
-
-
-
-
-
-
-
-
-
-
