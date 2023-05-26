@@ -4,6 +4,11 @@
 #define FILAS 17
 #define COLUMNAS 24
 #define TIPO_ENERGIA 100
+typedef struct {
+    char titulo[TIPO_ENERGIA];
+    double datos[COLUMNAS];
+} Energias;//se define la estructura para almacenar los datos de las energías.
+
 
 void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
 
