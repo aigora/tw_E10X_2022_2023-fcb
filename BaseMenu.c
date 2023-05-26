@@ -44,7 +44,7 @@ int main ()
     do//se ejecuta el bucle del menú principal.
     {
         mostrar_introduccion();//se ejecuta la función de introduccion
-        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Salir\n\n Opcion: ");
+        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Registro\n\n 4. Salir\n\n Opcion: ");
         scanf(" %c",&op1);
 
         switch(op1)
@@ -68,7 +68,7 @@ int main ()
 
                        break;
 
-              case '3':
+              case '4':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
                 scanf(" %c",&op2);
                 if(op2=='S' || op2=='s')
@@ -76,6 +76,9 @@ int main ()
                     return 0;
                 }
               break;
+
+              case '3':
+                    printf("bienvenido al registro");//aqui se mete la funciion de registro.
 
               default:
                 printf("\n    Opcion no valida");
