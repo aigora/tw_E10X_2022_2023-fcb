@@ -18,7 +18,9 @@ void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para 
 
 void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
 
-void datos_estadisticos(Energias registros[FILAS]);
+void datos_estadisticos(Energias registros[FILAS]);//esta funcion ejecuta los datos estadísticos.
+
+void mercados(Energias registros[FILAS]);
 
 double minimo(Energias tipo);
 
@@ -478,7 +480,12 @@ void datos_estadisticos(Energias registros[FILAS]){
 }
 
 
+void mercados(Energias registros[FILAS]){
 
+
+
+
+}
 
 
 
