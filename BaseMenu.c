@@ -210,6 +210,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 
 
                         case '1':
+                             system("cls");
                             printf("Que datos quuieres ver?\n");
                             printf("\t a.Todo 2021\n\t b.Todo 2022\n");
                             scanf("  %c",&aux_mostrar_datos);
@@ -273,7 +274,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 void datos_estadisticos(Energias registros[FILAS]){
 
                 char aux1;
-
+                  system("cls");
                 printf("¿De que tipo de generacion deseas obtener datos estadisticos?\n");
                 printf("\ta. Hidraulica\n\tb. Turbinacion bombeo \n\tc. Nuclear\n\td. Carbon\n\te. Motores diesel\n\tf. Turbina de gas\n\tg. Turbina de vapor\n\th. Ciclo combinado\n\ti. Hidroeolica\n\tj. Eolica\n\tk. Solar fotovoltaica\n\tl. Solar termica\n\tm. Otras renovables\n\tn. Cogeneracion\n\to. Residuos no renovables\n\tp. Residuos renovables\n\tq. Generacion total\n\t");
                 scanf(" %c", &aux1);
