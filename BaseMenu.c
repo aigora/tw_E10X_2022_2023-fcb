@@ -274,7 +274,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 
                             case '3'://mercados.
                              system("cls");
-                            printf("has entrado en mercados\nEN PROCESO..... ");
+                            mercados(registros);
 
 
                             break;
@@ -482,6 +482,64 @@ void datos_estadisticos(Energias registros[FILAS]){
 
 void mercados(Energias registros[FILAS]){
 
+
+       char aux,aux2,aux3;
+
+       system("cls");
+
+       printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
+
+       while(aux!='q'){
+
+        printf("\t 1. Consultar precio de la luz\n\t 2. Comercio\n\t 3. salir\n");
+         scanf(" %c",&aux);
+
+           switch(aux){
+
+           case '1':
+
+             printf("\n1. Nivel comercial\n2. Nivel industrial.\n");
+             scanf("  %c",&aux2);
+
+                 switch(aux2){
+                case '1':
+                    printf("\nEl precio de la luz para el consumidor es de ...\n");
+                    break;
+
+                case '2':
+                    printf("\nEl precio de la luz para el uso industrial es de  ...\n");
+                    break;
+
+                default:
+                    printf("\n estamos trabajando en ello \n");
+                    break;
+                 }
+
+             break;
+
+                case '2':
+
+                    printf("\nEspaña exportta....\n");
+
+                    break;
+
+                    case '3':
+                        printf("\n\n Seguro que quieres salir? ( S o N):");
+                        scanf("    %c",&aux3);
+
+                 if(aux3=='s'||aux3=='S'){
+                                aux='q';
+                                system("cls");
+                 }
+
+                    break;
+
+
+
+
+           }
+
+       }
 
 
 
