@@ -18,6 +18,8 @@ void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para 
 
 void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
 
+void datos_estadisticos(Energias registros[FILAS]);
+
 double minimo(Energias tipo);
 
 double emax(Energias tipo);
@@ -192,8 +194,8 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
 
 void base_de_datos(Energias registros[FILAS]){
 
- char aux;
- char aux1,aux_mostrar_datos;
+ char aux,aux1;
+ char aux_mostrar_datos;
         system("cls");
 printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
         while(aux!='q'){//bucle submenu base de datos.
@@ -243,9 +245,9 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 
                             break;
 
-                        case '2':
+                        case '2'://datos estadísticos.
 
-                            printf("el minimo de hidraulica es(PRUEBA) %f\n",minimo(registros[0]));//prubea
+                            datos_estadisticos(registros);//función que ejecuta los datos estadisticos.
 
                             break;
                         case '3':
@@ -268,7 +270,63 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 }
 
 
+void datos_estadisticos(Energias registros[FILAS]){
 
+                char aux1;
+
+                printf("¿De que tipo de generacion deseas obtener datos estadisticos?\n");
+                printf("\ta. Hidraulica\n\tb.c. Turbinacion bombeo \n\tc.d. Nuclear\n\td. Carbon\n");
+                scanf(" %c", &aux1);
+
+                switch (aux1) {
+                    case 'a':
+                        system("cls");
+                        printf("Estadisticas para Hidraulica:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[0]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[0]));
+                        printf("\tMedia primer semestre 2022: %.2f GW\n", mediaprimerano(registros[0]));
+                        printf("\tMedia segundo semestre 2022: %.2f GW\n", mediasegundoano(registros[0]));
+                        printf("\n\n");
+                        break;
+
+                    case 'b':
+                        system("cls");
+                        printf("Estadisticas para Turbinacion bommbeo:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[1]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[1]));
+                        printf("\tMedia primer semestre 2022: %.2f GW\n", mediaprimerano(registros[1]));
+                        printf("\tMedia segundo semestre 2022: %.2f GW\n", mediasegundoano(registros[1]));
+                        printf("\n\n");
+                        break;
+
+                    case 'c':
+                        system("cls");
+                        printf("Estadisticas para Nuclear:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[2]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[2]));
+                        printf("\tMedia primer semestre 2022: %.2f GW\n", mediaprimerano(registros[2]));
+                        printf("\tMedia segundo semestre 2022: %.2f GW\n", mediasegundoano(registros[2]));
+                        printf("\n\n");
+                        break;
+
+                    case 'd':
+                        system("cls");
+                        printf("Estadisticas para Carbon:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[3]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[3]));
+                        printf("\tMedia primer semestre 2022: %.2f GW\n", mediaprimerano(registros[3]));
+                        printf("\tMedia segundo semestre 2022: %.2f GW\n", mediasegundoano(registros[3]));
+                        printf("\n\n");
+                        break;
+
+                    default:
+                        printf("\n    Opcion no valida");
+                        break;
+                }
+
+
+
+}
 
 
 
