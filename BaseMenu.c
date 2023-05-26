@@ -204,7 +204,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
         while(aux!='q'){//bucle submenu base de datos.
 
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos \n\t 3.salir de base de datos \n");
+            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos\n\t 3.Mercados \n\t 4.salir de base de datos \n");
             scanf("  %c",&aux);
 
 
@@ -217,6 +217,9 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             printf("Que datos quuieres ver?\n");
                             printf("\t a.Todo 2021\n\t b.Todo 2022\n");
                             scanf("  %c",&aux_mostrar_datos);
+
+                            if(aux_mostrar_datos=='A'||aux_mostrar_datos=='z')aux_mostrar_datos+=32;//para que si se mete en mayuscula aún asi la coja
+
                             switch(aux_mostrar_datos){
                           case 'a':
                               system("cls");
@@ -254,18 +257,29 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             datos_estadisticos(registros);//función que ejecuta los datos estadisticos.
 
                             break;
-                        case '3':
+                        case '4':
 
 
                             printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
                             scanf("  %c",&aux1);
-                            if(aux1=='s'||aux1=='s'){
+                            if(aux1=='s'||aux1=='S'){
                                 aux='q';
                                 system("cls");
                                 }
 
 
                             break;
+
+                            case '3'://mercados.
+                             system("cls");
+                            printf("has entrado en mercados\nEN PROCESO..... ");
+
+
+                            break;
+
+                            default :
+                                printf("\ncaracter no valido\n");
+                                break;
 
 
                         }
