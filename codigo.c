@@ -11,7 +11,34 @@ typedef struct {
     double datos[COLUMNAS];
 } Energias;//se define la estructura para almacenar los datos de las energías.
 
+#include <stdio.h>
 
+void registro() {
+    char nombre[30];
+    char apellidos[30];
+    int edad;
+
+    printf("Ingrese su nombre: ");
+    scanf("%30s", nombre);
+
+    printf("Ingrese sus apellidos: ");
+    scanf("%30s", apellidos);
+    printf("Ingrese su edad: ");
+    scanf("%d", &edad);
+
+
+    FILE *archivo = fopen("registro.txt", "w");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo.\n");
+        return;
+    }
+
+
+    fprintf(archivo, "Nombre: %s\nApellidos: %s\n", nombre, apellidos);
+
+    fclose(archivo);
+}
 
 void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
 
@@ -32,7 +59,7 @@ double mediasegundoano(Energias tipo);
 
 int main ()
 {
-
+    registro();
     Energias registros[FILAS];//se define el vector de estructuras en el main
     FILE *archivo;// se define el fichero en el main.
     char buffer[1000],op1,op2;
