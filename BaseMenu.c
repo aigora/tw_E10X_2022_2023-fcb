@@ -33,6 +33,8 @@ double emax2021(Energias tipo);
 double mediaprimerano(Energias tipo);
 
 double mediasegundoano(Energias tipo);
+
+void registro();
 //se declaran todas las funciones que se usarán a lo largo del programa.
 
 int main ()
@@ -84,7 +86,9 @@ int main ()
               break;
 
               case '3':
-                    printf("bienvenido al registro");//aqui se mete la funciion de registro.
+                    system("cls");
+                    printf("...........BIENVENIDO AL REGISTRO............\n");//aqui se mete la funciion de registro.
+                    registro();
 
               default:
                 printf("\n    Opcion no valida");
@@ -607,6 +611,32 @@ void mercados(Energias registros[FILAS]){
 }
 
 
+void registro() {
+    char nombre[30];
+    char apellidos[30];
+    int edad;
+
+    printf("Ingrese su nombre: ");
+    scanf("%30s", nombre);
+
+    printf("Ingrese sus apellidos: ");
+    scanf("%30s", apellidos);
+    printf("Ingrese su edad: ");
+    scanf("%d", &edad);
+
+
+    FILE *archivo = fopen("registro.txt", "w");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo.\n");
+        return;
+    }
+
+
+    fprintf(archivo, "Nombre: %s\nApellidos: %s\n", nombre, apellidos);
+
+    fclose(archivo);
+}
 
 
 

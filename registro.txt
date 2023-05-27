@@ -1,2 +1,2 @@
-Nombre: gabriel
+Nombre: gabiel
 Apellidos: santos
