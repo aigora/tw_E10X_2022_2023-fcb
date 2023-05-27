@@ -260,7 +260,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             for (int i = 0; i <FILAS ; i++) {
                              printf("Titulo: %s\n", registros[i].titulo);
                               for (int j = 0; j <= 11; j++) {
-                             printf("%d/2021: %f GW  ;", j+1, registros[i].datos[j]);
+                             printf("%d/2021: %f GW \n", j+1, registros[i].datos[j]);
                                                           }
                                             printf("\n\n\n");
                                            }//bucle que recorre cada año y lo imprime por pantalla
@@ -273,7 +273,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                              printf("Titulo: %s\n", registros[i].titulo);
                               for (int j = 12; j < COLUMNAS; j++) {
 
-                             printf("%d/2022: %f GW  ;",j-11, registros[i].datos[j]);
+                             printf("%d/2022: %f GW \n",j-11, registros[i].datos[j]);
 
                                                           }
                                             printf("\n\n\n");
