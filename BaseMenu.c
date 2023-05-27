@@ -28,7 +28,7 @@ double minimo2022(Energias tipo);
 
 double emax2021(Energias tipo);
 
-double emax2021(Energias tipo);
+double emax2022(Energias tipo);
 
 double mediaprimerano(Energias tipo);
 
