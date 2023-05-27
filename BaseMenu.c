@@ -612,30 +612,75 @@ void mercados(Energias registros[FILAS]){
 
 
 void registro() {
+    typedef struct{
     char nombre[30];
     char apellidos[30];
     int edad;
+    }persona;
+    char c,aux2;
+    int aux12;
+   FILE *archivo ;
+persona personas;
 
-    printf("Ingrese su nombre: ");
-    scanf("%30s", nombre);
+    while(aux12!=1)
+        {
+            printf("\t1. Registrarse\n\t2. Ver registrados\n\t3. Salir\n ");
+            scanf("  %c", &aux12);
+            switch(aux12){
 
-    printf("Ingrese sus apellidos: ");
-    scanf("%30s", apellidos);
-    printf("Ingrese su edad: ");
-    scanf("%d", &edad);
+            case '1':
+                archivo = fopen("registro.txt", "a");
+                if(archivo==NULL){
+                    printf("\n\terror al abrir el fichero registros\n");
+                }
+                system("cls");
+                printf(".....HA COMENZADO EL REGISTRO.......\n ");
+                printf("Ingrese su nombre: ");
+                scanf(" %30s", personas.nombre);
+                printf("Ingrese sus apellidos: ");
+                scanf("  %30s", personas.apellidos);
+                 printf("Ingrese su edad: ");
+                 scanf(" %d", &personas.edad);
+                 fprintf(archivo, "Nombre: %s\tApellidos: %s \tedad: %i \n\n\n", personas.nombre, personas.apellidos,personas.edad);
+                 fclose(archivo);
+                break;
+                case '2':
+                archivo = fopen("registro.txt", "r");
+                 if(archivo==NULL){
+                    printf("\n\terror al abrir el fichero registros\n");
+                }
+                system("cls");
+                printf(".....VER REGISTRADOS.......\n ");
+                while(fscanf(archivo,"%c",&c)!=EOF){
+                    printf("%c",c);
+                }
+
+                 fclose(archivo);
+                break;
+
+                case '3':
+                printf("\n\tSeguro que quieres salir?(S o N):");
+                scanf("        %c",    &aux2);
+                if(aux2=='s'||aux2=='S'){
+                    aux12=1;
+                    system("cls");
+                }
 
 
-    FILE *archivo = fopen("registro.txt", "w");
+                break;
 
-    if (archivo == NULL) {
-        printf("No se pudo abrir el archivo.\n");
-        return;
+                default:
+                printf("\tERROR\n");
+                break;
+            }
+
+
     }
 
 
-    fprintf(archivo, "Nombre: %s\nApellidos: %s\n", nombre, apellidos);
 
-    fclose(archivo);
+
+
 }
 
 
