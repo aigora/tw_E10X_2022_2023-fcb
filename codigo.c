@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -11,6 +10,11 @@ typedef struct {
     double datos[COLUMNAS];
 } Energias;//se define la estructura para almacenar los datos de las energías.
 
+double diferencia_2021_2022(Energias tipo);
+
+double sumaenergia2021(Energias tipo);
+
+double sumaenergia2022(Energias tipo);
 
 void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
 
@@ -18,48 +22,28 @@ void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para a
 
 void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
 
-void datos_estadisticos(Energias registros[FILAS]);
+void datos_estadisticos(Energias registros[FILAS]);//esta funcion ejecuta los datos estadísticos.
 
-double minimo(Energias tipo);
+void mercados(Energias registros[FILAS]);
 
-double emax(Energias tipo);
+double minimo2021(Energias tipo);
+
+double minimo2022(Energias tipo);
+
+double emax2021(Energias tipo);
+
+double emax2022(Energias tipo);
 
 double mediaprimerano(Energias tipo);
 
 double mediasegundoano(Energias tipo);
 
-
-void registro() {
-    char nombre[30];
-    char apellidos[30];
-    int edad;
-
-    printf("Ingrese su nombre: ");
-    scanf("%30s", nombre);
-
-    printf("Ingrese sus apellidos: ");
-    scanf("%30s", apellidos);
-    printf("Ingrese su edad: ");
-    scanf("%d", &edad);
-
-
-    FILE *archivo = fopen("registro.txt", "w");
-
-    if (archivo == NULL) {
-        printf("No se pudo abrir el archivo.\n");
-        return;
-    }
-
-
-    fprintf(archivo, "Nombre: %s\nApellidos: %s\n", nombre, apellidos);
-
-    fclose(archivo);
-}
-
+void registro();
+//se declaran todas las funciones que se usarán a lo largo del programa.
 
 int main ()
 {
-    registro();
+
     Energias registros[FILAS];//se define el vector de estructuras en el main
     FILE *archivo;// se define el fichero en el main.
     char buffer[1000],op1,op2;
@@ -72,7 +56,7 @@ int main ()
     do//se ejecuta el bucle del menú principal.
     {
         mostrar_introduccion();//se ejecuta la función de introduccion
-        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Salir\n\n Opcion: ");
+        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Registro\n\n 4. Salir\n\n Opcion: ");
         scanf(" %c",&op1);
 
         switch(op1)
@@ -96,7 +80,7 @@ int main ()
 
                        break;
 
-              case '3':
+              case '4':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
                 scanf(" %c",&op2);
                 if(op2=='S' || op2=='s')
@@ -104,6 +88,11 @@ int main ()
                     return 0;
                 }
               break;
+
+              case '3':
+                    system("cls");
+                    printf("...........BIENVENIDO AL REGISTRO............\n");//aqui se mete la funciion de registro.
+                    registro();
 
               default:
                 printf("\n    Opcion no valida");
@@ -136,12 +125,57 @@ void mostrar_introduccion(void){
 
 //en las funciones el imput es el vector de estructuras, así dentro de la función tienes todos los datos del fichero
 
+//double sumaenergias(Energias tipo)
+//{
+//    double suma = 0;
+//    int x;
+//    for(x=1;x<=(COLUMNAS/2);x++)
+//    {
+//        suma = tipo.datos[x]+ tipo.datos[x-1];
+//    }
+//    return suma;
+//}
+double diferencia_2021_2022(Energias tipo)
+{
+    int suma1 = 0;
+    int suma2=0;
+    for (int i = 0; i < (COLUMNAS/2); i++) {
+        suma1 += tipo.datos[i];
+    }
+    for (int i = (COLUMNAS/2) ; i <=COLUMNAS; i++) {
+        suma2 += tipo.datos[i];
+    }
 
-double emax(Energias tipo)
+
+    return suma2-suma1;
+}
+double sumaenergia2021(Energias tipo)
+{
+    int suma = 0;
+
+    for (int i = 0; i < (COLUMNAS/2); i++) {
+        suma += tipo.datos[i];
+    }
+
+    return suma;
+}
+
+double sumaenergia2022(Energias tipo)
+{
+    int suma = 0;
+
+    for (int i = (COLUMNAS/2) ; i <=COLUMNAS; i++) {
+        suma += tipo.datos[i];
+    }
+
+    return suma;
+}
+
+double emax2021(Energias tipo)
 {
     double maxima = tipo.datos[0];
-    int x=0;
-    for(x=0;x<COLUMNAS;x++)
+    int x;
+    for(x=0;x<=(COLUMNAS/2);x++)
     {
         if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
     }
@@ -149,10 +183,33 @@ double emax(Energias tipo)
 return maxima;
 }
 
-double minimo(Energias tipo){
+double emax2022(Energias tipo)
+{
+    double maxima = tipo.datos[0];
+    int x;
+    for(x=(COLUMNAS/2);x<=(COLUMNAS);x++)
+    {
+        if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
+    }
+
+return maxima;
+}
+//HAY QUE REVISAR ESTA FUNCION DE emax2022 PORQ NO DA EL RESULTADO CORRECTO!!!!
+double minimo2021(Energias tipo){
   double res=tipo.datos[0];
   int i=0;
-  while(i<COLUMNAS){
+  while(i<(COLUMNAS/2)){
+    if(tipo.datos[i]< res)res=tipo.datos[i];
+    i++;
+  }
+
+return res;
+}
+
+double minimo2022(Energias tipo){
+  double res=tipo.datos[0];
+  int i=12;
+  while(i<(COLUMNAS)){
     if(tipo.datos[i]< res)res=tipo.datos[i];
     i++;
   }
@@ -229,7 +286,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
         while(aux!='q'){//bucle submenu base de datos.
 
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos \n\t 3.salir de base de datos \n");
+            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos\n\t 3.Mercados \n\t 4.salir de base de datos \n");
             scanf("  %c",&aux);
 
 
@@ -242,6 +299,9 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             printf("Que datos quuieres ver?\n");
                             printf("\t a.Todo 2021\n\t b.Todo 2022\n");
                             scanf("  %c",&aux_mostrar_datos);
+
+                            if(aux_mostrar_datos=='A'||aux_mostrar_datos=='z')aux_mostrar_datos+=32;//para que si se mete en mayuscula aún asi la coja
+
                             switch(aux_mostrar_datos){
                           case 'a':
                               system("cls");
@@ -249,7 +309,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             for (int i = 0; i <FILAS ; i++) {
                              printf("Titulo: %s\n", registros[i].titulo);
                               for (int j = 0; j <= 11; j++) {
-                             printf("%d/2021: %f GW  ;", j+1, registros[i].datos[j]);
+                             printf("%d/2021: %f GW \n", j+1, registros[i].datos[j]);
                                                           }
                                             printf("\n\n\n");
                                            }//bucle que recorre cada año y lo imprime por pantalla
@@ -262,7 +322,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                              printf("Titulo: %s\n", registros[i].titulo);
                               for (int j = 12; j < COLUMNAS; j++) {
 
-                             printf("%d/2022: %f GW  ;",j-11, registros[i].datos[j]);
+                             printf("%d/2022: %f GW \n",j-11, registros[i].datos[j]);
 
                                                           }
                                             printf("\n\n\n");
@@ -279,18 +339,29 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
                             datos_estadisticos(registros);//función que ejecuta los datos estadisticos.
 
                             break;
-                        case '3':
+                        case '4':
 
 
                             printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
                             scanf("  %c",&aux1);
-                            if(aux1=='s'||aux1=='s'){
+                            if(aux1=='s'||aux1=='S'){
                                 aux='q';
                                 system("cls");
                                 }
 
 
                             break;
+
+                            case '3'://mercados.
+                             system("cls");
+                            mercados(registros);
+
+
+                            break;
+
+                            default :
+                                printf("\ncaracter no valido\n");
+                                break;
 
 
                         }
@@ -312,170 +383,453 @@ void datos_estadisticos(Energias registros[FILAS]){
                     case 'a':
                         system("cls");
                         printf("Estadisticas para Hidraulica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[0]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[0]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[0]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[0]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[0]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[0]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[0]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[0]));
+                        printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros [0]));
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros [0]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [0]));
+                        if (diferencia_2021_2022(registros [0])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [0])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [0])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
+
 
                     case 'b':
                         system("cls");
                         printf("Estadisticas para Turbinacion bombeo:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[1]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[1]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[1]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[1]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[1]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[1]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[1]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[1]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [1]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [1]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [1]));
+                        if (diferencia_2021_2022(registros [1])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [1])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [1])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'c':
                         system("cls");
                         printf("Estadisticas para Nuclear:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[2]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[2]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[2]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[2]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[2]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[2]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[2]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[2]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [2]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [2]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [2]));
+                        if (diferencia_2021_2022(registros [2])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [2])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [2])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'd':
                         system("cls");
                         printf("Estadisticas para Carbon:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[3]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[3]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[3]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[3]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[3]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[3]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[3]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[3]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [3]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [3]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [3]));
+                        if (diferencia_2021_2022(registros [9])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [9])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [9])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'e':
                         system("cls");
                         printf("Estadisticas para Motores diesel:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[4]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[4]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[4]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[4]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[4]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[4]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[4]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[4]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [4]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [4]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [4]));
+                        if (diferencia_2021_2022(registros [4])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [4])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [4])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
+
 
                     case 'f':
                         system("cls");
                         printf("Estadisticas para Turbina de gas:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[5]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[5]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[5]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[5]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[5]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[5]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[5]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[5]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [5]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [5]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [5]));
+                        if (diferencia_2021_2022(registros [5])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [5])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [5])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'g':
                         system("cls");
                         printf("Estadisticas para Turbina de vapor:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[6]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[6]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[6]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[6]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[6]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[6]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[6]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[6]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [6]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [6]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [6]));
+                        if (diferencia_2021_2022(registros [6])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [6])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [6])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'h':
                         system("cls");
                         printf("Estadisticas para Ciclo combinado:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[7]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[7]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[7]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[7]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[7]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[7]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[7]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[7]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [7]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [7]));
+                        printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [7]));
+                        if (diferencia_2021_2022(registros [7])<0)
+                        {
+                            printf("Se ha generado mas energia en 2021") ;
+                        }
+                        if(diferencia_2021_2022(registros [7])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if (diferencia_2021_2022(registros [7])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'i':
                         system("cls");
                         printf("Estadisticas para Hidroeolica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[8]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[8]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[8]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[8]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[8]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[8]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[8]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[8]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [8]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [8]));
+                         printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [8]));
+                        if (diferencia_2021_2022(registros [8])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [8])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [8])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'j':
                         system("cls");
                         printf("Estadisticas para Eolica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[9]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[9]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[9]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[9]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[9]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[9]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[9]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[9]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [9]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [9]));
+                        printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [9]));
+                        if (diferencia_2021_2022(registros [9])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [9])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [9])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'k':
                         system("cls");
                         printf("Estadisticas para Solar fotovoltaica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[10]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[10]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[10]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[10]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[10]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[10]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[10]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[10]));
-                        printf("\n\n");
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [10]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [10]));
+                        printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [10]));
+                        if (diferencia_2021_2022(registros [10])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [10])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [10])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+                                                printf("\n\n");
                         break;
 
                     case 'l':
                         system("cls");
                         printf("Estadisticas para Solar termica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[11]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[11]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[11]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[11]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[11]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[11]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[11]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[11]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [11]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [11]));
+                        printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [11]));
+                        if (diferencia_2021_2022(registros [11])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [11])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [11])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
                         printf("\n\n");
                         break;
 
                     case 'm':
                         system("cls");
                         printf("Estadisticas para Otras renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[12]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[12]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[12]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[12]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[12]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[12]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[12]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[12]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [12]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [12]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [12]));
+                        if (diferencia_2021_2022(registros [912])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [12])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [12])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
+                        printf("\n\n");
+                        break;
                         printf("\n\n");
                         break;
 
                     case 'n':
                         system("cls");
                         printf("Estadisticas para Coogeneracion:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[13]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[13]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[13]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[13]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[13]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[13]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[13]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[13]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [13]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [13]));
+                        if (diferencia_2021_2022(registros [13])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [13])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [13])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
+                        printf("\n\n");
+                        break;
                         printf("\n\n");
                         break;
 
                     case 'o':
                         system("cls");
                         printf("Estadisticas para Residuos no renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[14]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[14]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[14]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[14]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[14]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[14]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[14]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[14]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [14]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [14]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [14]));
+                        if (diferencia_2021_2022(registros [14])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [14])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [14])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
+                        printf("\n\n");
+                        break;
                         printf("\n\n");
                         break;
 
                     case 'p':
                         system("cls");
                         printf("Estadisticas para Residuos renovables:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[15]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[15]));
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[15]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[15]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[15]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[15]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[15]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[15]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [15]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [15]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [15]));
+                        if (diferencia_2021_2022(registros [15])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [15])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [15])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
+                        printf("\n\n");
+                        break;
                         printf("\n\n");
                         break;
 
                     case 'q':
                         system("cls");
-                        printf("Estadisticas para Eolica:\n");
-                        printf("\tValor minimo en 2021: %.2f GW\n", minimo(registros[16]));
-                        printf("\tValor maximo en 2021: %.2f GW\n", emax(registros[16]));
+                        printf("Estadisticas para Generacion total:\n");
+                        printf("\tValor minimo en 2021: %.2f GW\n", minimo2021(registros[16]));
+                        printf("\tValor maximo en 2021: %.2f GW\n", emax2021(registros[16]));
+                        printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[16]));
+                        printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[16]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[16]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[16]));
+                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [16]));
+                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [16]));
+                        printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [16]));
+                        if (diferencia_2021_2022(registros [16])<0){
+                            printf("Se ha generado mas energia en 2021 ");
+                        }
+                        if(diferencia_2021_2022(registros [16])>0){
+                            printf("Se ha generado mas energia en 2022 ");
+
+                        }
+                        if(diferencia_2021_2022(registros [16])==0){
+                            printf("Se ha generado la misma energia tanto en 2021 como en 2022 ");
+                        }
+
+                        printf("\n\n");
+                        break;
                         printf("\n\n");
                         break;
 
@@ -489,10 +843,143 @@ void datos_estadisticos(Energias registros[FILAS]){
 }
 
 
+void mercados(Energias registros[FILAS]){
+
+
+       char aux,aux2,aux3;
+
+       system("cls");
+
+       printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
+
+       while(aux!='q'){
+
+        printf("\t 1. Consultar precio de la luz\n\t 2. Comercio\n\t 3. salir\n");
+         scanf(" %c",&aux);
+
+           switch(aux){
+
+           case '1':
+
+             printf("\n1. Nivel comercial\n2. Nivel industrial.\n");
+             scanf("  %c",&aux2);
+
+                 switch(aux2){
+                case '1':
+                    printf("\nEl precio de la luz para el consumidor es de ...\n");
+                    break;
+
+                case '2':
+                    printf("\nEl precio de la luz para el uso industrial es de  ...\n");
+                    break;
+
+                default:
+                    printf("\n estamos trabajando en ello \n");
+                    break;
+                 }
+
+             break;
+
+                case '2':
+
+                    printf("\nEspaña exportta....\n");
+
+                    break;
+
+                    case '3':
+                        printf("\n\n Seguro que quieres salir? ( S o N):");
+                        scanf("    %c",&aux3);
+
+                 if(aux3=='s'||aux3=='S'){
+                                aux='q';
+                                system("cls");
+                 }
+
+                    break;
 
 
 
 
+           }
+
+       }
+
+
+
+}
+
+
+void registro() {
+    typedef struct{
+    char nombre[30];
+    char apellidos[30];
+    int edad;
+    }persona;
+    char c,aux2;
+    int aux12;
+   FILE *archivo ;
+persona personas;
+
+    while(aux12!=1)
+        {
+            printf("\t1. Registrarse\n\t2. Ver registrados\n\t3. Salir\n ");
+            scanf("  %c", &aux12);
+            switch(aux12){
+
+            case '1':
+                archivo = fopen("registro.txt", "a");
+                if(archivo==NULL){
+                    printf("\n\terror al abrir el fichero registros\n");
+                }
+                system("cls");
+                printf(".....HA COMENZADO EL REGISTRO.......\n ");
+                printf("Ingrese su nombre: ");
+                scanf(" %30s", personas.nombre);
+                printf("Ingrese sus apellidos: ");
+                scanf("  %30s", personas.apellidos);
+                 printf("Ingrese su edad: ");
+                 scanf(" %d", &personas.edad);
+                 fprintf(archivo, "Nombre: %s\tApellidos: %s \tedad: %i \n\n\n", personas.nombre, personas.apellidos,personas.edad);
+                 fclose(archivo);
+                break;
+                case '2':
+                archivo = fopen("registro.txt", "r");
+                 if(archivo==NULL){
+                    printf("\n\terror al abrir el fichero registros\n");
+                }
+                system("cls");
+                printf(".....VER REGISTRADOS.......\n ");
+                while(fscanf(archivo,"%c",&c)!=EOF){
+                    printf("%c",c);
+                }
+
+                 fclose(archivo);
+                break;
+
+                case '3':
+                printf("\n\tSeguro que quieres salir?(S o N):");
+                scanf("        %c",    &aux2);
+                if(aux2=='s'||aux2=='S'){
+                    aux12=1;
+                    system("cls");
+                }
+
+
+                break;
+
+                default:
+                printf("\tERROR\n");
+                break;
+            }
+
+
+    }
+
+
+
+
+
+}
 
 
 
