@@ -22,6 +22,9 @@ double emax2021(Energias tipo);
 double emax2022(Energias tipo);
 double mediaprimerano(Energias tipo);
 double mediasegundoano(Energias tipo);
+double sumaenergia2021(Energias tipo);
+double sumaenergia2022(Energias tipo);
+double diferencia_2021_2022(Energias tipo);
 void registro();
 
 void mostrar_introduccion(void){
@@ -589,6 +592,41 @@ persona personas;
 
 
 
+}
+double diferencia_2021_2022(Energias tipo)
+{
+    int suma1 = 0;
+    int suma2=0;
+    for (int i = 0; i < (COLUMNAS/2); i++) {
+        suma1 += tipo.datos[i];
+    }
+    for (int i = (COLUMNAS/2) ; i <=COLUMNAS; i++) {
+        suma2 += tipo.datos[i];
+    }
+
+
+    return suma2-suma1;
+}
+double sumaenergia2021(Energias tipo)
+{
+    int suma = 0;
+
+    for (int i = 0; i < (COLUMNAS/2); i++) {
+        suma += tipo.datos[i];
+    }
+
+    return suma;
+}
+
+double sumaenergia2022(Energias tipo)
+{
+    int suma = 0;
+
+    for (int i = (COLUMNAS/2) ; i <=COLUMNAS; i++) {
+        suma += tipo.datos[i];
+    }
+
+    return suma;
 }
 
 
