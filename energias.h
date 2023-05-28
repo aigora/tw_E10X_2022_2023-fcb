@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
+#include <string.h>
+
 #define FILAS 17
 #define COLUMNAS 24
 #define TIPO_ENERGIA 100
@@ -8,223 +9,95 @@
 typedef struct {
     char titulo[TIPO_ENERGIA];
     double datos[COLUMNAS];
-} Energias;//se define la estructura para almacenar los datos de las energías.
+} Energias;
 
-
-double sumaenergia2021(Energias tipo);
-
-double sumaenergia2022(Energias tipo);
-
-void mostrar_introduccion(void);//con esta función se muestra el texto de la introducción.
-
-void programaEnUnaFuncion(Energias registros[FILAS]);//esta función sirve para almacenar los datos del fichero en un vector de estructuras.
-
-void base_de_datos(Energias registros[FILAS]);//esta función ejecuta la base de datos.
-
-void datos_estadisticos(Energias registros[FILAS]);//esta funcion ejecuta los datos estadísticos.
-
+void mostrar_introduccion(void);
+void programaEnUnaFuncion(Energias registros[FILAS]);
+void base_de_datos(Energias registros[FILAS]);
+void datos_estadisticos(Energias registros[FILAS]);
 void mercados(Energias registros[FILAS]);
-
 double minimo2021(Energias tipo);
-
 double minimo2022(Energias tipo);
-
 double emax2021(Energias tipo);
-
 double emax2022(Energias tipo);
-
 double mediaprimerano(Energias tipo);
-
 double mediasegundoano(Energias tipo);
-
 void registro();
-//se declaran todas las funciones que se usarán a lo largo del programa.
-
-int main ()
-{
-
-    Energias registros[FILAS];//se define el vector de estructuras en el main
-    FILE *archivo;// se define el fichero en el main.
-    char buffer[1000],op1,op2;
-    int i = 0, j;
-
-
-    //mostrar_introduccion();//se ejecuta la función de introduccion
-
-
-    do//se ejecuta el bucle del menú principal.
-    {
-        mostrar_introduccion();//se ejecuta la función de introduccion
-        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Base de Datos \n\n 3. Registro\n\n 4. Salir\n\n Opcion: ");
-        scanf(" %c",&op1);
-
-        switch(op1)
-        {
-            case '1':
-                system("cls");
-                  printf("\n Instrucciones:\n");
-                  printf("En esta aplicacion encontrara una base de datos sobre la generacion de electricidad en el 2021 y 2022\n ");
-                  printf("Podremos ver que tipos de generacion han habido si ha sido por medios renovables o no y obtener distintos datos estadisticos \n ");
-
-           printf("\n\n\n");
-
-            system("pause");
-             break;
-
-             case '2':
-                     printf("\n Base de Datos");//aqui se abre la base de datos.
-
-                         programaEnUnaFuncion(registros);//Se ejecuta la función de leer el fichero y almacenar los datos en el vector de estructuras.
-                         base_de_datos(registros);//Se ejecuta la función que de base de datos y empiza el submenú de la base de datos.
-
-                       break;
-
-              case '4':
-                printf("\n    Estas seguro de que quieres salir (S o N)?: ");//se ejecuta para salir.
-                scanf(" %c",&op2);
-                if(op2=='S' || op2=='s')
-                {
-                    return 0;
-                }
-              break;
-
-              case '3':
-                    system("cls");
-                    printf("...........BIENVENIDO AL REGISTRO............\n");//aqui se mete la funciion de registro.
-                    registro();
-
-              default:
-                printf("\n    Opcion no valida");
-              break;
-        }
-
-          system("cls");
-    }
-    while(1);
-    return 0;
-
-}
-
 
 void mostrar_introduccion(void){
-
-    FILE *intro;//Se declara el fichero de introducción.
+    FILE *intro;
     char c;
-
-  intro = fopen("descripcion.red.electrica.txt","r");
-  if(intro==NULL){
-    printf("Error en la introduccion");//abre fichero comprueba que todo bien.
-  }
-   while(fscanf(intro,"%c",&c)!=EOF){
-    printf("%c",c);
-   }//imprime todo el fichero de introducción.
-
-}
-
-
-//en las funciones el imput es el vector de estructuras, así dentro de la función tienes todos los datos del fichero
-
-//double sumaenergias(Energias tipo)
-//{
-//    double suma = 0;
-//    int x;
-//    for(x=1;x<=(COLUMNAS/2);x++)
-//    {
-//        suma = tipo.datos[x]+ tipo.datos[x-1];
-//    }
-//    return suma;
-//}
-
-double sumaenergia2021(Energias tipo) 
-{
-    int suma = 0;
-
-    for (int i = 0; i < (COLUMNAS/2); i++) {
-        suma += tipo.datos[i];
+    intro = fopen("descripcion.red.electrica.txt","r");
+    if(intro == NULL){
+        printf("Error en la introduccion");
+        return;
     }
-
-    return suma;
-}
-
-double sumaenergia2022(Energias tipo)
-{
-    int suma = 0;
-
-    for (int i = (COLUMNAS/2) ; i <=COLUMNAS; i++) {
-        suma += tipo.datos[i];
+    while(fscanf(intro,"%c",&c) != EOF){
+        printf("%c",c);
     }
-
-    return suma;
+    fclose(intro);
 }
 
-double emax2021(Energias tipo)
-{
+double emax2021(Energias tipo){
     double maxima = tipo.datos[0];
     int x;
-    for(x=0;x<=(COLUMNAS/2);x++)
-    {
-        if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
+    for(x = 0; x <= (COLUMNAS/2); x++){
+        if(tipo.datos[x] > maxima)
+            maxima = tipo.datos[x];
     }
-
-return maxima;
+    return maxima;
 }
 
-double emax2022(Energias tipo)
-{
-    double maxima = tipo.datos[0];
+double emax2022(Energias tipo){
+    double maxima = tipo.datos[COLUMNAS/2];
     int x;
-    for(x=(COLUMNAS/2);x<=(COLUMNAS);x++)
-    {
-        if(tipo.datos[x]>maxima) maxima=tipo.datos[x];
+    for(x = COLUMNAS/2; x < COLUMNAS; x++){
+        if(tipo.datos[x] > maxima)
+            maxima = tipo.datos[x];
     }
-
-return maxima;
+    return maxima;
 }
-//HAY QUE REVISAR ESTA FUNCION DE emax2022 PORQ NO DA EL RESULTADO CORRECTO!!!!
+
 double minimo2021(Energias tipo){
-  double res=tipo.datos[0];
-  int i=0;
-  while(i<(COLUMNAS/2)){
-    if(tipo.datos[i]< res)res=tipo.datos[i];
-    i++;
-  }
-
-return res;
+    double res = tipo.datos[0];
+    int i = 0;
+    while(i < (COLUMNAS/2)){
+        if(tipo.datos[i] < res)
+            res = tipo.datos[i];
+        i++;
+    }
+    return res;
 }
 
 double minimo2022(Energias tipo){
-  double res=tipo.datos[0];
-  int i=12;
-  while(i<(COLUMNAS)){
-    if(tipo.datos[i]< res)res=tipo.datos[i];
-    i++;
-  }
-
-return res;
+    double res = tipo.datos[COLUMNAS/2];
+    int i = COLUMNAS/2;
+    while(i < COLUMNAS){
+        if(tipo.datos[i] < res)
+            res = tipo.datos[i];
+        i++;
+    }
+    return res;
 }
 
-double mediaprimerano(Energias tipo)
-{
-    double med=0;
-    int x=0;
-    for(x=0;x<(COLUMNAS/2);x++)
-    {
+double mediaprimerano(Energias tipo){
+    double med = 0;
+    int x = 0;
+    for(x = 0; x < (COLUMNAS/2); x++){
         med = med + tipo.datos[x];
     }
-med = med/(COLUMNAS/2);
-return med;
+    med = med / (COLUMNAS/2);
+    return med;
 }
 
-double mediasegundoano(Energias tipo)
-{
-    double med=0;
-    int x=0;
-    for(x=12;x<COLUMNAS;x++)
-    {
+double mediasegundoano(Energias tipo){
+    double med = 0;
+    int x = COLUMNAS/2;
+    for(x = COLUMNAS/2; x < COLUMNAS; x++){
         med = med + tipo.datos[x];
     }
-med = med/(COLUMNAS/2);
-return med;
+    med = med / (COLUMNAS/2);
+    return med;
 }
 
 void programaEnUnaFuncion(Energias registros[FILAS]) {
@@ -375,8 +248,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[0]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[0]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[0]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [0]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [0]));
                         printf("\n\n");
                         break;
 
@@ -389,8 +260,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[1]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[1]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[1]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [1]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [1]));
                         printf("\n\n");
                         break;
 
@@ -403,8 +272,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[2]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[2]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[2]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [2]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [2]));
                         printf("\n\n");
                         break;
 
@@ -417,8 +284,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[3]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[3]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[3]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [3]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [3]));
                         printf("\n\n");
                         break;
 
@@ -431,8 +296,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[4]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[4]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[4]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [4]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [4]));
                         printf("\n\n");
                         break;
 
@@ -445,8 +308,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[5]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[5]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[5]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [5]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [5]));
                         printf("\n\n");
                         break;
 
@@ -459,8 +320,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[6]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[6]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[6]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [6]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [6]));
                         printf("\n\n");
                         break;
 
@@ -473,8 +332,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[7]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[7]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[7]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [7]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [7]));
                         printf("\n\n");
                         break;
 
@@ -487,8 +344,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[8]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[8]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[8]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [8]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [8]));
                         printf("\n\n");
                         break;
 
@@ -501,8 +356,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[9]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[9]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[9]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [9]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [9]));
                         printf("\n\n");
                         break;
 
@@ -515,8 +368,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[10]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[10]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[10]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [10]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [10]));
                         printf("\n\n");
                         break;
 
@@ -529,8 +380,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[11]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[11]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[11]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [11]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [11]));
                         printf("\n\n");
                         break;
 
@@ -543,8 +392,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[12]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[12]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[12]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [12]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [12]));
                         printf("\n\n");
                         break;
 
@@ -557,8 +404,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[13]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[13]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[13]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [13]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [13]));
                         printf("\n\n");
                         break;
 
@@ -571,8 +416,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[14]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[14]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[14]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [14]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [14]));
                         printf("\n\n");
                         break;
 
@@ -585,8 +428,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[15]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[15]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[15]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [15]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [15]));
                         printf("\n\n");
                         break;
 
@@ -599,8 +440,6 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[16]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[16]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[16]));
-                        printf("\tGenracion total en 2021: %.2f GW\n", sumaenergia2021(registros [16]));
-                        printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [16]));
                         printf("\n\n");
                         break;
 
@@ -751,6 +590,8 @@ persona personas;
 
 
 }
+
+
 
 
 
