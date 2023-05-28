@@ -26,7 +26,64 @@ double sumaenergia2021(Energias tipo);
 double sumaenergia2022(Energias tipo);
 double diferencia_2021_2022(Energias tipo);
 void registro();
+void mesmaximo(Energias tipo);
 
+void mesmaximo(Energias tipo)//HAY QUE EDITAR ESTA FUNCION
+{
+     double maxima = tipo.datos[0];
+     int x;
+     int aux=0;
+while(x<<(COLUMNAS/2))
+{
+    for(aux=0;aux<COLUMNAS/2;aux++)
+    {
+        if(tipo.datos[x]>maxima)
+    {
+    maxima=tipo.datos[x];
+    aux=1;
+    }
+    x++;
+}
+switch(aux)
+    {
+    case '1':
+        printf("Enero");
+        break;
+    case '2':
+        printf("Febrero");
+        break;
+    case '3':
+        printf("Marzo");
+        break;
+    case '4':
+        printf("Abril");
+        break;
+    case '5':
+        printf("Mayo");
+        break;
+    case '6':
+        printf("Junio");
+        break;
+    case '7':
+        printf("Julio");
+        break;
+    case '8':
+        printf("Agosto");
+        break;
+    case '9':
+        printf("Septiembre");
+        break;
+    case '10':
+        printf("Octubre");
+        break;
+    case '11':
+        printf("Noviembre");
+        break;
+    case '12':
+        printf("Diciembre");
+        break;
+    }
+}
 void mostrar_introduccion(void){
     FILE *intro;
     char c;
