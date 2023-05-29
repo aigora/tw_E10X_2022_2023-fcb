@@ -908,12 +908,12 @@ printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
 
                  switch(aux2){
                 case '1':
-                    printf("\nEl precio de la luz para el consumidor es de ...\n");
+                    printf("\nEl precio de la luz para el consumidor es de 0,1658 €/kWh\n");
 
                     break;
 
                 case '2':
-                    printf("\nEl precio de la luz para el uso industrial es de  ...\n");
+                    printf("\nEl precio de la luz para el uso industrial es de  60,4587 €/MWh\n");
                     break;
 
                 default:
