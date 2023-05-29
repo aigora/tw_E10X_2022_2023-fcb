@@ -5,11 +5,11 @@
   \/_/ /_/   \/_____/   \/____/      \/_____/   \/_____/   \/_____/   \/_____/     \/_/   \/_/ /_/   \/_/   \/_____/   \/_/\/_/ 
                                                                                                                                 
 
-Red eléctrica de España (REE) es la empresa que opera y gestiona la red de transporte de energía en nuestro país.
+Red electrica de España (REE) es la empresa que opera y gestiona la red de transporte de energia en nuestro pais.
 
-Se encarga del correcto funcionamiento del transporte de la energía proveniente de las centrales de generación.
-A través del Centro de Control Técnico (CECOEL), se vigila el correcto funcionamiento, así como cualquier anomalía surgida de imprevisto.
+Se encarga del correcto funcionamiento del transporte de la energía proveniente de las centrales de generacion.
+A traves del Centro de Control Técnico (CECOEL), se vigila el correcto funcionamiento, asi como cualquier anomalia surgida de imprevisto.
 
-Definir cuánta energía va a trasladarse cada día por la red de transporte, también es responsabilidad de Red Eléctrica de España. Para ello, REE hace una previsión cada día de cuánta energía va a necesitar nuestra país. De esta forma, la red nunca va a sufrir cortes por exceso o falta de energía.
+Definir cuanta energia va a trasladarse cada dia por la red de transporte, tambien es responsabilidad de Red Electrica de España. Para ello, REE hace una prevision cada dia de cuanta energia va a necesitar nuestra pais. De esta forma, la red nunca va a sufrir cortes por exceso o falta de energia.
 
 En este proyecto vas a poder elegir diferentes opciones de informacion que ha sido obtenida por esta empresa.
