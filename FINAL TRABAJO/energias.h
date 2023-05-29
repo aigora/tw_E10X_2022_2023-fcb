@@ -1248,7 +1248,7 @@ double datos_estadisticos_expor( exportacion paises[FILAS2]){
 
 printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias saldos\n\t 3.Mostrar medias importaciones\n\t 4.salir de comercio \n");
+            printf(" \t 1.Mostrar media importaciones \n\t 2.Mostrar medias saldos\n\t 3.Mostrar medias exportaciones\n\t 4.salir de comercio \n");
             scanf("  %c",&aux);
 
 
@@ -1258,7 +1258,7 @@ printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
 
                         case '1':
                              system("cls");
-                             printf("\n la media de las exportaciones es :%f MWh\n",mediaExportaciones( paises));
+                             printf("\n la media de las importaciones es :%f MWh\n",mediaExportaciones( paises));
                             break;
 
 
@@ -1277,7 +1277,7 @@ printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
 
 
                         system("cls");
-                             printf("\n la media de las importaciones es :%f MWh\n",mediaImportacion( paises));
+                             printf("\n la media de las exportaciones es :%f MWh\n",mediaImportacion( paises));
 
 
 
