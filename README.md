@@ -1,5 +1,5 @@
 # Fascinante Consultorio Basado en datos 
-
+![](https://github.com/aigora/tw_E10X_2022_2023-fcb/blob/master/IMAGES/logofcb.1.png)
 
 El proyecto que vamos a realizar consiste en hacer un estudio sobre la generación en energía eléctrica en España a lo largo de los años 2021 y 2022, en el que con los datos que se aportan en el fichero organizarlos y mostrar esa información o hacer un estudio de ella a guto del usuario .
 ## Integrantes del equipo
