@@ -1,6 +1,0 @@
-Nombre: gabriel	Apellidos: santos 	edad: 20 
-
-
-Nombre: Jorge	Apellidos: Sanche Ser 	edad: 21 
-
-
