@@ -34,6 +34,7 @@ double sumaenergia2022(Energias tipo);
 double diferencia_2021_2022(Energias tipo);
 void registro();
 void mesmaximo(Energias tipo);
+void exportaciones(exportacion paises[FILAS2]);
 
 
 void mesmaximo(Energias tipo){
@@ -244,9 +245,9 @@ void base_de_datos(Energias registros[FILAS],exportacion paises[FILAS2]){
  char aux,aux1;
  char aux_mostrar_datos;
         system("cls");
-printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
-        while(aux!='q'){//bucle submenu base de datos.
 
+        while(aux!='q'){//bucle submenu base de datos.
+printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
             printf("seleccione la opcion que desea realizar\n");
             printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos\n\t 3.Mercados \n\t 4.salir de base de datos \n");
             scanf("  %c",&aux);
@@ -775,10 +776,10 @@ void mercados(Energias registros[FILAS],exportacion paises[FILAS2]){
 
        system("cls");
 
-       printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
+
 
        while(aux!='q'){
-
+printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
         printf("\t 1. Consultar precio de la luz\n\t 2. Comercio\n\t 3. salir\n");
          scanf(" %c",&aux);
 
@@ -792,14 +793,6 @@ void mercados(Energias registros[FILAS],exportacion paises[FILAS2]){
                  switch(aux2){
                 case '1':
                     printf("\nEl precio de la luz para el consumidor es de ...\n");
-                    lectura_fichero_expor(paises);
-                     for (int i = 0; i <FILAS2 ; i++) {
-                             printf("Titulo: %s\n", paises[i].pais);
-                              for (int j = 0; j < COLUMNAS2; j++) {
-                             printf("%d/2021: %f GW \n", j+1, paises[i].numeros[j]);
-                                                          }
-                                            printf("\n\n\n");
-                                           }
 
                     break;
 
@@ -816,7 +809,9 @@ void mercados(Energias registros[FILAS],exportacion paises[FILAS2]){
 
                 case '2':
 
-                    printf("\nEspaña exportta....\n");
+                    system("cls");
+                    lectura_fichero_expor(paises);
+                    exportaciones(paises);
 
                     break;
 
@@ -950,7 +945,72 @@ double sumaenergia2022(Energias tipo)
     return suma;
 }
 
+void exportaciones(exportacion paises[FILAS2]){
+    char aux,aux1;
 
+        while(aux!='q'){//bucle submenu base de datos.
+printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
+            printf("seleccione la opcion que desea realizar\n");
+            printf(" \t 1.Mostrar datos \n\t 2.\n\t 3. \n\t 4.salir de exportaciones \n");
+            scanf("  %c",&aux);
+
+
+
+                        switch(aux){
+
+
+                        case '1':
+                             system("cls");
+                              for (int i = 0; i <FILAS2 ; i++) {
+                             printf("Pais: %s\n", paises[i].pais);
+                              for (int j = 0; j < COLUMNAS2; j++) {
+                             printf("%d/2021: %f GW \n", j+1, paises[i].numeros[j]);
+                                                          }
+                                            printf("\n\n\n");
+                                           }
+
+                            break;
+
+
+
+
+
+
+
+                        case '2'://datos estadísticos.
+
+
+
+                            break;
+                        case '4':
+
+
+                            printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
+                            scanf("  %c",&aux1);
+                            if(aux1=='s'||aux1=='S'){
+                                aux='q';
+                                system("cls");
+                                }
+
+
+                            break;
+
+                            case '3'://mercados.
+
+
+                            break;
+
+                            default :
+                                printf("\ncaracter no valido\n");
+                                break;
+
+
+                        }
+                        }
+
+
+
+}
 
 
 
