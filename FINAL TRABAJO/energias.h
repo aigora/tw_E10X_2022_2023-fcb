@@ -3,19 +3,26 @@
 #include <string.h>
 
 #define FILAS 17
+#define FILAS2 5
 #define COLUMNAS 24
+#define COLUMNAS2 72
 #define TIPO_ENERGIA 100
 
 typedef struct {
     char titulo[TIPO_ENERGIA];
     double datos[COLUMNAS];
 } Energias;
+typedef struct {
+    char pais[TIPO_ENERGIA];
+    double numeros[COLUMNAS2];
+} exportacion;
 
 void mostrar_introduccion(void);
 void programaEnUnaFuncion(Energias registros[FILAS]);
-void base_de_datos(Energias registros[FILAS]);
+void lectura_fichero_expor(exportacion paises[FILAS2]);
+void base_de_datos(Energias registros[FILAS],exportacion paises[FILAS2]);
 void datos_estadisticos(Energias registros[FILAS]);
-void mercados(Energias registros[FILAS]);
+void mercados(Energias registros[FILAS],exportacion paises[FILAS2]);
 double minimo2021(Energias tipo);
 double minimo2022(Energias tipo);
 double emax2021(Energias tipo);
@@ -27,10 +34,9 @@ double sumaenergia2022(Energias tipo);
 double diferencia_2021_2022(Energias tipo);
 void registro();
 void mesmaximo(Energias tipo);
-double diferencia_2021_2022(Energias tipo);
 
-void mesmaximo(Energias tipo)//HAY QUE EDITAR ESTA FUNCION
-{
+
+void mesmaximo(Energias tipo){
      float maxima = tipo.datos[2];
      int x=0,aux=0;
      int cont;
@@ -196,8 +202,44 @@ void programaEnUnaFuncion(Energias registros[FILAS]) {
     fclose(archivo);
 }
 
+void lectura_fichero_expor(exportacion paises[FILAS2]){
 
-void base_de_datos(Energias registros[FILAS]){
+    FILE *archivo;
+    char buffer[10000];//vecttor para meter temporalmente una linea
+    int i = 0, j;
+
+    archivo = fopen("todas-fronteras-fisicos_01-2021_12-2022.csv", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de exportacion.\n");
+        return;
+    }//abre fichero y comprueba que todo okey.
+    for (j = 0; j < 7; j++) {
+        fgets(buffer, sizeof(buffer), archivo);
+    }//coge las 5 primeras filas y las mete en el temporal.
+
+    while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS2) {//mientras que lo que lea del archivo y almacenando en temporal no se nulo y i<filas
+        char *token = strtok(buffer, ",");//se declara el token que que será la partición de la linea separado por una coma
+        if (token != NULL) {
+            strncpy(paises[i].pais, token, TIPO_ENERGIA - 1);
+        }//almacena el título de la generación.
+
+        j = 0;
+        while (token != NULL) {
+            token = strtok(NULL, ",");
+            if (token != NULL) {
+                paises[i].numeros[j] = atof(token);
+                j++;
+            }
+        }
+
+        i++;
+    }//almacena cada mes en el vector de estructuras
+
+    fclose(archivo);
+
+}
+
+void base_de_datos(Energias registros[FILAS],exportacion paises[FILAS2]){
 
  char aux,aux1;
  char aux_mostrar_datos;
@@ -274,7 +316,7 @@ printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
 
                             case '3'://mercados.
                              system("cls");
-                            mercados(registros);
+                            mercados(registros,paises);
 
 
                             break;
@@ -726,7 +768,7 @@ void datos_estadisticos(Energias registros[FILAS]){
 }
 
 
-void mercados(Energias registros[FILAS]){
+void mercados(Energias registros[FILAS],exportacion paises[FILAS2]){
 
 
        char aux,aux2,aux3;
@@ -750,6 +792,15 @@ void mercados(Energias registros[FILAS]){
                  switch(aux2){
                 case '1':
                     printf("\nEl precio de la luz para el consumidor es de ...\n");
+                    lectura_fichero_expor(paises);
+                     for (int i = 0; i <FILAS2 ; i++) {
+                             printf("Titulo: %s\n", paises[i].pais);
+                              for (int j = 0; j < COLUMNAS2; j++) {
+                             printf("%d/2021: %f GW \n", j+1, paises[i].numeros[j]);
+                                                          }
+                                            printf("\n\n\n");
+                                           }
+
                     break;
 
                 case '2':

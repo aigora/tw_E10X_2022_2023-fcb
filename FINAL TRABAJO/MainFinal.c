@@ -10,6 +10,7 @@ int main ()
 {
 
     Energias registros[FILAS];//se define el vector de estructuras en el main
+    exportacion paises[FILAS2];
     FILE *archivo;// se define el fichero en el main.
     char buffer[1000],op1,op2;
     int i = 0, j;
@@ -41,7 +42,7 @@ int main ()
                      printf("\n Base de Datos");//aqui se abre la base de datos.
 
                          programaEnUnaFuncion(registros);//Se ejecuta la función de leer el fichero y almacenar los datos en el vector de estructuras.
-                         base_de_datos(registros);//Se ejecuta la función que de base de datos y empiza el submenú de la base de datos.
+                         base_de_datos(registros,paises);//Se ejecuta la función que de base de datos y empiza el submenú de la base de datos.
 
                        break;
 
