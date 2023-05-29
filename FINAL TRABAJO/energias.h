@@ -1203,6 +1203,7 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
 
 
                         case '2'://datos estadísticos.
+                            system("cls");
 
                          datos_estadisticos_expor( paises);
 
@@ -1239,6 +1240,7 @@ double datos_estadisticos_expor( exportacion paises[FILAS2]){
  char aux,aux1;
 
         while(aux!='q'){//bucle submenu base de datos.
+
 printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
             printf("seleccione la opcion que desea realizar\n");
             printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias saldos\n\t 3.Mostrar medias importaciones\n\t 4.salir de comercio \n");
