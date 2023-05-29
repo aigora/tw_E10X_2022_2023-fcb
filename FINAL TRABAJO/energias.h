@@ -981,7 +981,7 @@ persona personas;
                 printf("Ingrese su nombre: ");
                 scanf(" %30s", personas.nombre);
                 printf("Ingrese sus apellidos: ");
-                scanf("  %30s", personas.apellidos);
+                scanf("  %30[^\n]", personas.apellidos);
                  printf("Ingrese su edad: ");
                  scanf(" %d", &personas.edad);
                  fprintf(archivo, "Nombre: %s\tApellidos: %s \tedad: %i \n\n\n", personas.nombre, personas.apellidos,personas.edad);
