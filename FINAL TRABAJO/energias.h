@@ -1086,7 +1086,7 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
                                     }
                                     else if ((j - 2) % 3 == 0)
                                     {
-                                       printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                       printf("Saldo: %f GW \n", paises[i].numeros[j]);
                                     }
                                     else
                                     {
