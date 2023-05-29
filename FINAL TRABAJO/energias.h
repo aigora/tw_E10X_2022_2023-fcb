@@ -367,7 +367,7 @@ void lectura_fichero_expor(exportacion paises[FILAS2]){
     }//abre fichero y comprueba que todo okey.
     for (j = 0; j < 7; j++) {
         fgets(buffer, sizeof(buffer), archivo);
-    }//coge las 5 primeras filas y las mete en el temporal.
+    }//coge las 7 primeras filas y las mete en el temporal.
 
     while (fgets(buffer, sizeof(buffer), archivo) != NULL && i < FILAS2) {//mientras que lo que lea del archivo y almacenando en temporal no se nulo y i<filas
         char *token = strtok(buffer, ",");//se declara el token que que será la partición de la linea separado por una coma
@@ -1178,6 +1178,7 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
                               for (int i = 0; i <FILAS2 ; i++) {
                              printf("Pais: %s\n", paises[i].pais);
                               for (int j = 0; j < COLUMNAS2; j++) {
+                                  
                                     if ((j - 1) % 3 == 0)
                                     {
 
@@ -1192,6 +1193,8 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
                                     else
                                     {
                                         printf("\n-----------------------------\n");
+                                    
+                                   
                                         printf("Exportacion: %f MWh \n", paises[i].numeros[j]);
                                     }
 
