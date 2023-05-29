@@ -314,7 +314,7 @@ void base_de_datos(Energias registros[FILAS],exportacion paises[FILAS2]){
         while(aux!='q'){//bucle submenu base de datos.
 printf(".........BIENVENIDO A LA BASE DE DATOS............\n\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar datos \n\t 2.Datos estadísticos\n\t 3.Mercados \n\t 4.salir de base de datos \n");
+            printf(" \t 1.Mostrar datos \n\t 2.Datos estadisticos\n\t 3.Mercados \n\t 4.salir de base de datos \n");
             scanf("  %c",&aux);
 
 
