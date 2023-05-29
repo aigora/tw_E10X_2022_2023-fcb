@@ -91,6 +91,9 @@ switch(aux)
     case 12:
         printf("\tEl mes en el que mas potencia se obtuvo de esta energia en 2021 fue diciembre\n");
         break;
+    default:
+        printf("\tError");
+        break;
     }
 }
 
@@ -147,6 +150,9 @@ switch(aux)
         break;
     case 24:
         printf("\tEl mes en el que mas potencia se obtuvo de esta energia en 2022 fue diciembre\n");
+        break;
+    default:
+        printf("\tError");
         break;
     }
 }
@@ -412,6 +418,7 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[0]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[0]));
                         mesmaximo2022(registros[0]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[0]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[0]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[0]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [0]));
@@ -437,6 +444,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[1]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[1]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[1]));
+                        mesmaximo2022(registros[1]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[1]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[1]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[1]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [1]));
@@ -462,6 +471,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[2]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[2]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[2]));
+                        mesmaximo2022(registros[2]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[2]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[2]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[2]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [2]));
@@ -488,6 +499,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[3]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[3]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[3]));
+                        mesmaximo2022(registros[3]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[3]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[3]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[3]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [3]));
@@ -514,6 +527,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[4]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[4]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[4]));
+                        mesmaximo2022(registros[4]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[4]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[4]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[4]));
                           printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [4]));
@@ -540,6 +555,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[5]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[5]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[5]));
+                        mesmaximo2022(registros[5]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[5]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[5]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[5]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [5]));
@@ -566,6 +583,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[6]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[6]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[6]));
+                        mesmaximo2022(registros[6]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[6]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[6]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[6]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [6]));
@@ -591,6 +610,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[7]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[7]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[7]));
+                        mesmaximo2022(registros[7]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[7]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[7]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[7]));
                           printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [7]));
@@ -618,6 +639,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[8]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[8]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[8]));
+                        mesmaximo2022(registros[8]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[8]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[8]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[8]));
                          printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [8]));
@@ -643,6 +666,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[9]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[9]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[9]));
+                        mesmaximo2022(registros[9]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[9]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[9]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[9]));
                          printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [9]));
@@ -669,6 +694,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[10]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[10]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[10]));
+                        mesmaximo2022(registros[10]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[10]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[10]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[10]));
                          printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [10]));
@@ -694,6 +721,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[11]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[11]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[11]));
+                        mesmaximo2022(registros[11]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[11]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[11]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[11]));
                          printf("\tDiferencia de energia generada entre 2021 y 2022: %.2f GW\n", diferencia_2021_2022(registros [11]));
@@ -719,6 +748,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[12]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[12]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[12]));
+                        mesmaximo2022(registros[12]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[12]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[12]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[12]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [12]));
@@ -745,6 +776,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[13]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[13]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[13]));
+                        mesmaximo2022(registros[13]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[13]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[13]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[13]));
                          printf("\tGenracion total en 2022: %.2f GW\n", sumaenergia2022(registros [13]));
@@ -770,6 +803,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[14]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[14]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[14]));
+                        mesmaximo2022(registros[14]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[14]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[14]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[14]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [14]));
@@ -795,6 +830,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[15]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[15]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[15]));
+                        mesmaximo2022(registros[15]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[15]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[15]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[15]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [15]));
@@ -820,6 +857,8 @@ void datos_estadisticos(Energias registros[FILAS]){
                         printf("\tGeneracion total en 2021: %.2f GW\n", sumaenergia2021(registros[16]));
                         printf("\tValor minimo en 2022: %.2f GW\n", minimo2022(registros[16]));
                         printf("\tValor maximo en 2022: %.2f GW\n", emax2022(registros[16]));
+                        mesmaximo2022(registros[16]);
+                        printf("\tGeneracion total en 2022: %.2f GW\n", sumaenergia2022(registros[16]));
                         printf("\tGeneracion media 2021: %.2f GW\n", mediaprimerano(registros[16]));
                         printf("\tGeneracion media 2022: %.2f GW\n", mediasegundoano(registros[16]));
                          printf("\tMejora respecto de 2021 a 2022: %.2f GW\n", diferencia_2021_2022(registros [16]));
@@ -1088,5 +1127,3 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
 
 
 }
-
-
