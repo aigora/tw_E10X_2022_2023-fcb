@@ -38,6 +38,7 @@ void mesmaximo2022(Energias tipo);
 void exportaciones(exportacion paises[FILAS2]);
 double mediaExportaciones( exportacion paises[FILAS2]);
 double datos_estadisticos_expor( exportacion paises[FILAS2]);
+double mediaSal( exportacion paises[FILAS2]);
 
 
 double mediaExportaciones( exportacion paises[FILAS2])
@@ -65,6 +66,34 @@ auxex1=auxex1/exporta;
 return auxex1;
 }
 
+double mediaSal( exportacion paises[FILAS2])
+{
+    double auxsal1=0;
+float auxsal=0,sal=0;
+for (int i = 0; i <FILAS2 ; i++)
+    {
+        printf("Pais: %s\n", paises[i].pais);
+for (int j = 0; j < COLUMNAS2; j++)
+    {
+if ((j - 1) % 3 == 0)
+{
+}
+else if ((j - 2) % 3 == 0)
+{
+}
+else
+{
+    auxsal=paises[i].numeros[j];
+    auxsal1=auxsal+auxsal1;
+    sal++;
+}
+}
+}
+auxsal1=auxsal1/sal;
+
+
+return auxsal1;
+}
 
 
 void mesmaximo2021(Energias tipo){
@@ -1184,7 +1213,7 @@ double datos_estadisticos_expor( exportacion paises[FILAS2]){
         while(aux!='q'){//bucle submenu base de datos.
 printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias importaciones\n\t 3.salir de comercio \n");
+            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias saldos\n\t 3.salir de comercio \n");
             scanf("  %c",&aux);
 
 
@@ -1205,7 +1234,8 @@ printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
 
                         case '2':
 
-
+                            system("cls");
+                             printf("\n la media de las exportaciones es :%f MWh\n",mediaSal( paises));
 
                             break;
                         case '3':
