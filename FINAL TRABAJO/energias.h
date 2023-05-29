@@ -1160,6 +1160,7 @@ double sumaenergia2022(Energias tipo)
 
 void exportaciones(exportacion paises[FILAS2]){
     char aux,aux1;
+    int cont;
 
         while(aux!='q'){//bucle submenu base de datos.
 printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
@@ -1179,15 +1180,19 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
                               for (int j = 0; j < COLUMNAS2; j++) {
                                     if ((j - 1) % 3 == 0)
                                     {
-                                       printf("Importacion: %f GW \n", paises[i].numeros[j]);
+
+
+
+                                       printf("Importacion: %f MWh \n", paises[i].numeros[j]);
                                     }
                                     else if ((j - 2) % 3 == 0)
                                     {
-                                       printf("Saldo: %f GW \n", paises[i].numeros[j]);
+                                       printf("Saldo: %f MWH \n", paises[i].numeros[j]);
                                     }
                                     else
                                     {
-                                        printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                        printf("\n-----------------------------\n");
+                                        printf("Exportacion: %f MWh \n", paises[i].numeros[j]);
                                     }
 
                                                           }
