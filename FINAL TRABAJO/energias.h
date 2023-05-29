@@ -1019,11 +1019,23 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
 
 
                         case '1':
-                             system("cls");
+                            system("cls");
                               for (int i = 0; i <FILAS2 ; i++) {
                              printf("Pais: %s\n", paises[i].pais);
                               for (int j = 0; j < COLUMNAS2; j++) {
-                             printf("%d/2021: %f GW \n", j+1, paises[i].numeros[j]);
+                                    if ((j - 1) % 3 == 0)
+                                    {
+                                       printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                    }
+                                    else if ((j - 2) % 3 == 0)
+                                    {
+                                       printf("Importacion: %f GW \n", paises[i].numeros[j]);
+                                    }
+                                    else
+                                    {
+                                        printf("Saldo: %f GW \n", paises[i].numeros[j]);
+                                    }
+
                                                           }
                                             printf("\n\n\n");
                                            }
