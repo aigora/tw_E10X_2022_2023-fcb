@@ -908,12 +908,12 @@ printf("...........HAS ENTRADO EN LA OPCION MERCADOS.............\n");
 
                  switch(aux2){
                 case '1':
-                    printf("\nEl precio de la luz para el consumidor es de 0,1658 €/kWh\n");
+                    printf("\nEl precio de la luz para el consumidor es de 0,1658 euros/kWh\n");
 
                     break;
 
                 case '2':
-                    printf("\nEl precio de la luz para el uso industrial es de  60,4587 €/MWh\n");
+                    printf("\nEl precio de la luz para el uso industrial es de  60,4587 euros/MWh\n");
                     break;
 
                 default:
@@ -967,7 +967,7 @@ persona personas;
 
     while(aux12!=1)
         {
-            printf("\t1. Registrarse\n\t2. Ver registrados\n\t3. Salir\n ");
+            printf("\t1. Registrarse\n\t2. Ver registrados\n\t3. Eliminar el registro\n\t4. Salir\n ");
             scanf("  %c", &aux12);
             switch(aux12){
 
@@ -1001,7 +1001,7 @@ persona personas;
                  fclose(archivo);
                 break;
 
-                case '3':
+                case '4':
                 printf("\n\tSeguro que quieres salir?(S o N):");
                 scanf("        %c",    &aux2);
                 if(aux2=='s'||aux2=='S'){
@@ -1010,6 +1010,17 @@ persona personas;
                 }
 
 
+                break;
+
+                 case '3':
+                archivo = fopen("registro.txt", "W");
+                if(archivo==NULL){
+                    printf("\n\terror al abrir el fichero registros\n");
+                }
+                system("cls");
+                printf(".....HA ELIMINADO EL REGISTRO.......\n ");
+
+                 fclose(archivo);
                 break;
 
                 default:
