@@ -36,6 +36,35 @@ void registro();
 void mesmaximo2021(Energias tipo);
 void mesmaximo2022(Energias tipo);
 void exportaciones(exportacion paises[FILAS2]);
+double mediaExportaciones( exportacion paises[FILAS2]);
+double datos_estadisticos_expor( exportacion paises[FILAS2]);
+
+
+double mediaExportaciones( exportacion paises[FILAS2])
+{
+    double auxex1=0;
+    float auxex=0,exporta=0;
+for (int i = 0; i <FILAS2 ; i++)
+    {
+        printf("Pais: %s\n", paises[i].pais);
+for (int j = 0; j < COLUMNAS2; j++)
+    {
+if ((j - 1) % 3 == 0)
+{
+auxex=paises[i].numeros[j];
+auxex1=auxex+auxex1;
+exporta++;
+}
+else
+{
+
+}
+}
+}
+auxex1=auxex1/exporta;
+return auxex1;
+}
+
 
 
 void mesmaximo2021(Energias tipo){
@@ -1117,6 +1146,64 @@ printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
 
 
                         case '2'://datos estadísticos.
+
+                         datos_estadisticos_expor( paises);
+
+                            break;
+                        case '3':
+
+
+                            printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
+                            scanf("  %c",&aux1);
+                            if(aux1=='s'||aux1=='S'){
+                                aux='q';
+                                system("cls");
+                                }
+
+
+                            break;
+
+
+
+                            default :
+                                printf("\ncaracter no valido\n");
+                                break;
+
+
+                        }
+                        }
+
+
+
+}
+
+double datos_estadisticos_expor( exportacion paises[FILAS2]){
+
+ char aux,aux1;
+
+        while(aux!='q'){//bucle submenu base de datos.
+printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
+            printf("seleccione la opcion que desea realizar\n");
+            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias importaciones\n\t 3.salir de comercio \n");
+            scanf("  %c",&aux);
+
+
+
+                        switch(aux){
+
+
+                        case '1':
+                             system("cls");
+                             printf("\n la media de las exportaciones es :%f MWh\n",mediaExportaciones( paises));
+                            break;
+
+
+
+
+
+
+
+                        case '2':
 
 
 
