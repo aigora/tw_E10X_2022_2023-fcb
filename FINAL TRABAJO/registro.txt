@@ -1,27 +1,3 @@
-Nombre: gabiel
-Apellidos: santos
-Nombre: paco
-Apellidos: jones
-Nombre: as
-Apellidos: sa
-Nombre: 	Apellidos:  	edad: 6415856 
-
-
-Nombre: 	Apellidos:  	edad: 6415856 
-
-
-Nombre: 	Apellidos:  	edad: 6415856 
-
-
-Nombre: 	Apellidos:  	edad: 6415856 
-
-
-Nombre: hola	Apellidos: es 	edad: 0 
-
-
-Nombre: hola	Apellidos: santos 	edad: 12 
-
-
-Nombre: jesus	Apellidos: saantos 	edad: 30 
+Nombre: gabriel	Apellidos: santos 	edad: 20 
 
 

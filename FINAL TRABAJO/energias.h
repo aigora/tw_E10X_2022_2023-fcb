@@ -1013,7 +1013,7 @@ persona personas;
                 break;
 
                  case '3':
-                archivo = fopen("registro.txt", "W");
+                archivo = fopen("registro.txt", "w");
                 if(archivo==NULL){
                     printf("\n\terror al abrir el fichero registros\n");
                 }
