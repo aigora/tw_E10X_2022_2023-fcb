@@ -39,7 +39,35 @@ void exportaciones(exportacion paises[FILAS2]);
 double mediaExportaciones( exportacion paises[FILAS2]);
 double datos_estadisticos_expor( exportacion paises[FILAS2]);
 double mediaSal( exportacion paises[FILAS2]);
+double mediaImportacion( exportacion paises[FILAS2]);
 
+
+
+double mediaImportacion( exportacion paises[FILAS2])
+{
+    double auxim1=0;
+float auxim=0,importa=0;
+for (int i = 0; i <FILAS2 ; i++)
+    {
+        printf("Pais: %s\n", paises[i].pais);
+for (int j = 0; j < COLUMNAS2; j++)
+    {
+if ((j - 2) % 3 == 0)
+{
+    auxim=paises[i].numeros[j];
+    auxim1=auxim+auxim1;
+    importa++;
+}
+else
+{
+}
+}
+}
+auxim1=auxim1/importa;
+
+
+return auxim1;
+}
 
 double mediaExportaciones( exportacion paises[FILAS2])
 {
@@ -1213,7 +1241,7 @@ double datos_estadisticos_expor( exportacion paises[FILAS2]){
         while(aux!='q'){//bucle submenu base de datos.
 printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias saldos\n\t 3.salir de comercio \n");
+            printf(" \t 1.Mostrar media exportaciones \n\t 2.Mostrar medias saldos\n\t 3.Mostrar medias importaciones\n\t 4.salir de comercio \n");
             scanf("  %c",&aux);
 
 
@@ -1239,6 +1267,16 @@ printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
 
                             break;
                         case '3':
+
+
+                        system("cls");
+                             printf("\n la media de las importaciones es :%f MWh\n",mediaImportacion( paises));
+
+
+
+                            break;
+
+                            case '4':
 
 
                             printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
