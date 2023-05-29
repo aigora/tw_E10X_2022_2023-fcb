@@ -1065,9 +1065,9 @@ void exportaciones(exportacion paises[FILAS2]){
     char aux,aux1;
 
         while(aux!='q'){//bucle submenu base de datos.
-printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
+printf("\n.......HAS ENTRADO EN COMERCIO.......\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar datos \n\t 2.datos estadisticos\n\t 3.salir de exportaciones \n");
+            printf(" \t 1.Mostrar datos \n\t 2.datos estadisticos\n\t 3.salir de comercio \n");
             scanf("  %c",&aux);
 
 
@@ -1080,7 +1080,19 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
                               for (int i = 0; i <FILAS2 ; i++) {
                              printf("Pais: %s\n", paises[i].pais);
                               for (int j = 0; j < COLUMNAS2; j++) {
-                             printf("%d/2021: %f GW \n", j+1, paises[i].numeros[j]);
+                                    if ((j - 1) % 3 == 0)
+                                    {
+                                       printf("Importacion: %f GW \n", paises[i].numeros[j]);
+                                    }
+                                    else if ((j - 2) % 3 == 0)
+                                    {
+                                       printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                    }
+                                    else
+                                    {
+                                        printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                    }
+
                                                           }
                                             printf("\n\n\n");
                                            }
