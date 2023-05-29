@@ -31,7 +31,8 @@ int main ()
                 system("cls");
                   printf("\n Instrucciones:\n");
                   printf("En esta aplicacion encontrara una base de datos sobre la generacion de electricidad en el 2021 y 2022\n ");
-                  printf("Podremos ver que tipos de generacion han habido si ha sido por medios renovables o no y obtener distintos datos estadisticos \n ");
+                  printf("Al saltar esta pantalla encontraras la opcion base de datos y registrarse, podras entar y salir de ellas cuando quieras. \n ");
+                  printf("Al entar en la opcion base de datos, puedes o bien ver datos estadisticos del 2021 y 2022 o consultar exportaciones e importaciones de energia con otros paises. \n ");
 
            printf("\n\n\n");
 
