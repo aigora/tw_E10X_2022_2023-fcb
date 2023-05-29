@@ -1067,7 +1067,7 @@ void exportaciones(exportacion paises[FILAS2]){
         while(aux!='q'){//bucle submenu base de datos.
 printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
             printf("seleccione la opcion que desea realizar\n");
-            printf(" \t 1.Mostrar datos \n\t 2.\n\t 3. \n\t 4.salir de exportaciones \n");
+            printf(" \t 1.Mostrar datos \n\t 2.datos estadisticos\n\t 3.salir de exportaciones \n");
             scanf("  %c",&aux);
 
 
@@ -1098,7 +1098,7 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
 
 
                             break;
-                        case '4':
+                        case '3':
 
 
                             printf("Seguro que quieres salir? (S N) :");//salida del submenu de la base de datos.
@@ -1111,10 +1111,7 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
 
                             break;
 
-                            case '3'://mercados.
 
-
-                            break;
 
                             default :
                                 printf("\ncaracter no valido\n");
