@@ -1263,7 +1263,7 @@ printf("\n.......HAS ENTRADO EN DATOS ESTADISTICOS DEL COMERCIO.......\n");
                         case '2':
 
                             system("cls");
-                             printf("\n la media de las exportaciones es :%f MWh\n",mediaSal( paises));
+                             printf("\n la media de los saldos es :%f MWh\n",mediaSal( paises));
 
                             break;
                         case '3':
