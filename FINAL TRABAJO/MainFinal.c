@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#include "energias.h"
+#include "energias.c"
 #define FILAS 17
 #define COLUMNAS 24
 #define TIPO_ENERGIA 100
