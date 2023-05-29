@@ -1025,15 +1025,15 @@ printf("\n.......HAS ENTRADO EN EXPORTACIONES.......\n");
                               for (int j = 0; j < COLUMNAS2; j++) {
                                     if ((j - 1) % 3 == 0)
                                     {
-                                       printf("Exportacion: %f GW \n", paises[i].numeros[j]);
+                                       printf("importacion: %f GW \n", paises[i].numeros[j]);
                                     }
                                     else if ((j - 2) % 3 == 0)
                                     {
-                                       printf("Importacion: %f GW \n", paises[i].numeros[j]);
+                                       printf("Saldo: %f GW \n", paises[i].numeros[j]);
                                     }
                                     else
                                     {
-                                        printf("Saldo: %f GW \n", paises[i].numeros[j]);
+                                        printf("Exportaciones: %f GW \n", paises[i].numeros[j]);
                                     }
 
                                                           }
